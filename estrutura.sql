@@ -49,7 +49,7 @@ CREATE TABLE Matriculas (
 -- AVALIAÇÂO DO DOCENTE
 CREATE TABLE Avaliacao (
 	id INT AUTO_INCREMENT PRIMARY KEY ,
-    semestre VARCHAR(20) NOT NULL,
+    bimestre VARCHAR(20) NOT NULL,
     estudante_id INT NOT NULL,
     professor_id INT NOT NULL,
     disciplina_id INT NOT NULL,
