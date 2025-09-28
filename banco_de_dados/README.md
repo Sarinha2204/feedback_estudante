@@ -17,7 +17,7 @@ O banco de dados foi modelado para contemplar os seguintes módulos:
 
 ## 📐 Modelo Entidade-Relacionamento (MER)
 
-![MER do Banco](/MER.png)
+![MER do Banco](/banco_de_dados/MER.png)
 
 ---
 
