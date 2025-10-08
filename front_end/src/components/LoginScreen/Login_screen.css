@@ -1,0 +1,187 @@
+/* --- Globais e Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Reset de estilos para garantir consistência entre navegadores. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+}
+
+/* --- Layout Principal --- */
+
+/* Container principal que ocupa toda a tela e divide em duas seções. */
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; 
+}
+
+/* --- Seção do Formulário (Esquerda) --- */
+.login-form-section {
+    width: 50%;
+    display: flex;
+    padding: 2.5rem;
+    position: relative; /* Contexto para o posicionamento absoluto do header. */
+    background-color: #ffffff;
+}
+
+/* Cabeçalho com a logo e nome da escola. */
+.login-header {
+    position: absolute;
+    top: 1.5rem; /* AJUSTE: Movido para mais perto do topo. */
+    left: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.logo {
+    height: 3.5rem;
+    width: auto;
+    object-fit: contain;
+}
+
+.school-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+/* Wrapper que centraliza e estiliza o card do formulário. */
+.login-form-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: auto; /* Centraliza o card na vertical e horizontal. */
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px HSL(0, 0%, 0%, 0.08);
+}
+
+/* --- Estilos do Formulário --- */
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.login-form .input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.6rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #1a202c;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efeito de foco para melhor usabilidade. */
+.input-group input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+
+.login-button {
+    width: 100%;
+    padding: 1.1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #12a105;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    letter-spacing: 0.5px;
+}
+
+.login-button:hover {
+    background-color: #0e8509;
+}
+
+.login-footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #718096;
+    line-height: 1.5;
+}
+
+/* --- Seção da Imagem (Direita) --- */
+.login-image-section {
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- Design Responsivo --- */
+
+/* Para tablets e telas menores, o layout muda para coluna única. */
+@media (max-width: 1024px) {
+    .login-image-section {
+        display: none; /* Oculta a imagem. */
+    }
+    .login-form-section {
+        width: 100%; /* Seção do formulário ocupa a tela inteira. */
+        justify-content: center;
+        align-items: center;
+    }
+    .login-header {
+        position: relative; /* Header volta ao fluxo normal do documento. */
+        top: auto;
+        left: auto;
+        margin-bottom: 2rem;
+        justify-content: center;
+        width: 100%;
+    }
+    .login-form-wrapper {
+        margin: 0;
+        width: 95%;
+        max-width: none;
+    }
+}
+
+/* Ajustes finos para telas de celular. */
+@media (max-width: 600px) {
+    .login-form-section {
+        padding: 1rem;
+    }
+    .login-form-wrapper {
+        padding: 1.5rem;
+        box-shadow: none; /* Remove a sombra em telas muito pequenas. */
+    }
+    .title {
+        font-size: 1.75rem;
+    }
+}
