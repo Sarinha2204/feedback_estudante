@@ -1,66 +1,66 @@
 /**
- * Componente: LoginScreen
- * * Propósito: Renderiza a página de login da aplicação, incluindo o formulário
- * de autenticação e elementos visuais de identidade da instituição.
- * * @returns {JSX.Element} A interface da tela de login.
+ * componente: LoginScreen
+ * propósito: renderiza a página de login da aplicação, contendo o formulário
+ * de autenticação e elementos de identidade visual.
  */
 import React from 'react';
 
-// Importa a folha de estilos específica para este componente.
+// importação da folha de estilos do componente.
 import './Login_screen.css'; 
-// Importa o arquivo de imagem da logo para uso no componente.
+// importação do arquivo de imagem da logo.
 import logoEscola from './logo_jt.png';
 
 const LoginScreen = () => {
-  // URL da imagem de destaque exibida na seção lateral da tela.
-  const imageUrl = 'https://imgur.com/ZUAGdoL.png';
+  // url para a imagem de destaque da seção direita.
+  const imageUrl = 'https://imgur.com/K9aLoVo.png';
 
   return (
-    <div className="login-container">
+    // container principal que engloba toda a tela.
+    <div className="tela-login">
       
-      {/* Seção Esquerda: Contém todos os elementos do formulário e identidade. */}
-      <div className="login-form-section">
+      {/* seção principal do formulário, à esquerda. */}
+      <div className="secao-formulario">
           
-        {/* Cabeçalho posicionado no topo da seção do formulário. */}
-        <header className="login-header">
-          <img src={logoEscola} alt="Logo da Escola Estadual Padre João Tomes" className="logo" />
-          <h1 className="school-name">Escola Estadual Padre João Tomes</h1>
+        <header className="cabecalho">
+          <img src={logoEscola} alt="Logo da Escola Estadual Padre João Tomes" className="logo-escola" />
+          <h1 className="nome-escola">Escola Estadual Padre João Tomes</h1>
         </header>
 
-        {/* Wrapper principal para o conteúdo do formulário, permitindo centralização. */}
-        <div className="login-form-wrapper">
+        {/* container do formulário de login. */}
+        <div className="card-formulario">
           <main>
-            <h2 className="title">Feedback Discente</h2> 
-            <p className="subtitle">Bem-vindo(a)! Utilize seus dados para entrar.</p>
+            <h2 className="titulo-principal">
+              <span className="titulo-gradiente">Feedback Discente</span>
+            </h2>
 
-            <form className="login-form">
-              <div className="input-group">
-                <label htmlFor="student-code">Código do Estudante (SGDE)</label>
+            <form className="formulario">
+              <div className="grupo-input">
+                <label htmlFor="codigo-estudante">Código do Estudante (SGDE)</label>
                 <input 
                   type="text" 
-                  id="student-code" 
-                  name="student-code"
+                  id="codigo-estudante" 
+                  name="codigo-estudante"
                   placeholder="Digite seu código de estudante" 
                   required 
                 />
               </div>
               
-              <div className="input-group">
-                <label htmlFor="password">Senha</label>
+              <div className="grupo-input">
+                <label htmlFor="senha">Senha</label>
                 <input 
                   type="password" 
-                  id="password" 
-                  name="password"
+                  id="senha" 
+                  name="senha"
                   placeholder="********" 
                   required
                 />
               </div>
               
-              <button type="submit" className="login-button">Acessar</button>
+              <button type="submit" className="botao-acessar">Acessar</button>
             </form>
           </main>
           
-          <footer className="login-footer">
+          <footer className="rodape-card">
             <p>
               Caso não consiga acessar o sistema, entre em contato com a Direção da Escola para regularizar seu acesso.
             </p>
@@ -68,9 +68,9 @@ const LoginScreen = () => {
         </div>
       </div>
       
-      {/* Seção Direita: Exibe uma imagem de destaque. Fica oculta em telas menores. */}
+      {/* seção da imagem de destaque, à direita. */}
       <div 
-        className="login-image-section"
+        className="secao-imagem"
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
       </div>
@@ -80,3 +80,4 @@ const LoginScreen = () => {
 }
 
 export default LoginScreen;
+
