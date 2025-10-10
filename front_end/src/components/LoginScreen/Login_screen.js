@@ -13,7 +13,7 @@ import logoEscola from './logo_jt.png';
 
 const LoginScreen = () => {
   // URL da imagem de destaque exibida na seção lateral da tela.
-  const imageUrl = 'https://imgur.com/ZUAGdoL.png';
+  const imageUrl = 'https://imgur.com/K9aLoVo.png';
 
   return (
     <div className="login-container">
@@ -30,8 +30,7 @@ const LoginScreen = () => {
         {/* Wrapper principal para o conteúdo do formulário, permitindo centralização. */}
         <div className="login-form-wrapper">
           <main>
-            <h2 className="title">Feedback Discente</h2> 
-            <p className="subtitle">Bem-vindo(a)! Utilize seus dados para entrar.</p>
+           <h2 className="title"><span className="title-highlight">Feedback Discente</span></h2>
 
             <form className="login-form">
               <div className="input-group">
