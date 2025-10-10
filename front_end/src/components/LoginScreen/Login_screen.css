@@ -1,101 +1,101 @@
-/* --- Globais e Imports --- */
+/* importação da fonte do google fonts. */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
+/* reset de estilos. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* novo fundo unificado para toda a página. */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f2f5; /* Um fundo neutro para o body */
+    background-color: #ffffff;
 }
 
-/* --- Layout Principal (Container para as duas seções) --- */
-.login-container {
-    display: flex; /* Divide em duas colunas */
+/* container principal que organiza o layout da tela. */
+.tela-login {
+    display: flex;
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    position: relative; /* Para posicionar elementos internos */
+    position: relative;
 }
 
-/* --- Seção do Formulário (Esquerda) --- */
-.login-form-section {
+/* seção da esquerda, que contém o formulário. */
+.secao-formulario {
     width: 50%;
     display: flex;
-    flex-direction: column; /* Organiza os itens verticalmente */
-    justify-content: center; /* Centraliza o wrapper do formulário */
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 2.5rem;
     position: relative;
-    z-index: 2; /* Garante que fique acima da imagem principal */
-    background-color: #ffffff; 
+    z-index: 2;
+    background-color: transparent;
 }
 
-/* Cabeçalho posicionado no topo da seção do formulário. */
-.login-header {
-    position: absolute; /* Posição absoluta dentro de .login-form-section */
+/* cabeçalho com logo e nome da escola. */
+.cabecalho {
+    position: absolute;
     top: 1.5rem;
     left: 2.5rem;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    z-index: 3; /* Acima de tudo */
+    z-index: 3;
 }
 
-.logo {
+.logo-escola {
     height: 3.5rem;
     width: auto;
     object-fit: contain;
 }
 
-.school-name {
+.nome-escola {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #30518a;
+    background: linear-gradient(45deg, #0b74cf, #312c62);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-/* Wrapper que estiliza o card do formulário e o move para a direita. */
-.login-form-wrapper {
+/* card principal do formulário, que continua com seu fundo branco. */
+.card-formulario {
     width: 100%;
     max-width: 460px;
     padding: 2.5rem;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 4px 4px 4px 4px HSL(0, 0%, 0%, 0.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     position: relative;
-    left: 110px; 
+    left: 110px;
 }
 
-/* --- Estilos do Formulário (Mantidos ou Ajustados sutilmente) --- */
-.title {
-    font-size: 3.8rem; /* Ajustado um pouco para caber melhor */
+/* título "Feedback Discente". */
+.titulo-principal {
+    font-size: 3.8rem;
     font-weight: 800;
-    margin-bottom: 3.5rem; /* Ajuste para equilibrar */
+    margin-bottom: 3.5rem;
     text-align: center;
 }
 
-/* Estilo para a palavra destacada no título com EFEITO GRADIENTE */
-.title .title-highlight {
-  /* 1. O gradiente é aplicado como um fundo (background) */
-  /* Escolhi um gradiente de dourado para laranja, mas você pode mudar */
-  background: linear-gradient(45deg, #0b74cf, #258de7);
-
-  /* 2. O fundo é "recortado" para ter o formato do texto */
-  -webkit-background-clip: text;  /* Essencial para funcionar em mais navegadores */
-  background-clip: text;
-
-  /* 3. A cor do texto fica transparente para revelar o fundo (o gradiente) */
-  color: transparent;
+/* estilo de gradiente para o título. */
+.titulo-gradiente {
+    background: linear-gradient(45deg, #0b74cf, #258de7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-.login-form .input-group {
+/* grupo de label e input do formulário. */
+.grupo-input {
     margin-bottom: 1.5rem;
 }
 
-.input-group label {
+.grupo-input label {
     display: block;
     font-size: 0.95rem;
     font-weight: 500;
@@ -103,7 +103,7 @@ body {
     margin-bottom: 0.6rem;
 }
 
-.input-group input {
+.grupo-input input {
     width: 100%;
     padding: 1rem 1.25rem;
     border: 1px solid #e2e8f0;
@@ -113,13 +113,13 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-.input-group input:focus {
+.grupo-input input:focus {
     outline: none;
     border-color: #4299e1;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
 }
 
-.login-button {
+.botao-acessar {
     width: 100%;
     padding: 1.1rem;
     border: none;
@@ -128,106 +128,102 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     letter-spacing: 0.5px;
     background: linear-gradient(90deg, #0d7eb2, #7a8bf7);
 }
 
-.login-button:hover {
+.botao-acessar:hover {
     background: linear-gradient(90deg, #505fa0, #12648d);
+    transform: translateY(-2px);
 }
 
-.login-footer {
-    margin-top: 2.5rem; /* Ajustado para equilibrar */
+.rodape-card {
+    margin-top: 2.5rem;
     text-align: center;
     font-size: 0.875rem;
     color: #718096;
     line-height: 1.5;
 }
 
-/* --- Seção da Imagem (Direita) --- */
-.login-image-section {
+/* seção da direita, com a imagem de destaque. */
+.secao-imagem {
     width: 50%;
-    position: relative; /* Para posicionar elementos internos */
-    z-index: 1; /* Fica abaixo do formulário */
-
-    /* Novo estilo: Cor de fundo sólida e imagem de fundo abstrata */
-    background-color: #ffffff; /* Um roxo escuro para combinar */
-    background-size: cover; /* Ajusta a imagem para cobrir a área */
-    background-position: center; /* Centraliza a imagem */
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
+    /* IMAGEM PADRÃO PARA DESKTOP */
+    background-image: url('https://imgur.com/K9aLoVo.png');
 }
 
-/* --- Design Responsivo --- */
-@media (max-width: 1024px) {
-    .login-container {
-        flex-direction: column; /* Empilha as seções verticalmente */
+
+/* --- estilos para responsividade --- */
+@media (max-width: 1224px) {
+    /* no celular, o container vira o 'palco' para as camadas. */
+    .tela-login {
+        position: relative;
+        display: block;
     }
 
-    .login-form-section,
-    .login-image-section {
-        width: 100%; /* Ocupam a largura total */
-        height: auto; /* Altura automática */
+    /* a imagem vira o fundo de tela inteira. */
+    .secao-imagem {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        /* IMAGEM NOVA, SÓ PARA CELULAR */
+        background-image: url('https://imgur.com/L0P28PS.png');
     }
 
-    .login-image-section {
-        min-height: 200px; /* Garante uma altura mínima para a imagem no mobile */
-        order: 1; /* Imagem acima do formulário */
+    /* a seção do formulário flutua por cima da imagem. */
+    .secao-formulario {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background: rgba(247, 249, 252, 0.6);
+        backdrop-filter: blur(5px);
     }
 
-    .login-form-section {
-        order: 2; /* Formulário abaixo da imagem */
-        padding-top: 6rem; /* Mais espaço no topo para o header */
-        background-color: #fbfdff; /* Fundo sólido em telas menores */
-        background-image: none; /* Remove a imagem de fundo abstrata para simplicidade */
-    }
-
-    .login-header {
-        position: absolute; /* Mantém o header fixo no topo da tela */
-        top: 1.5rem;
-        left: 50%; /* Centraliza horizontalmente */
-        transform: translateX(-50%); /* Ajusta para centralização exata */
-        width: auto; /* Largura automática */
-        margin-bottom: 0;
+    .cabecalho {
+        position: static;
+        margin-bottom: 2rem;
         justify-content: center;
-        background-color: #ffffff; /* Fundo branco para o header */
-        padding: 0.5rem 1.5rem;
-        border-radius: 30px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        z-index: 10; /* Sempre no topo */
+    }
+    
+    .card-formulario {
+        left: 0;
+        width: 90%;
+        max-width: 460px;
     }
 
-    .title {
+    .titulo-principal {
         font-size: 3rem;
         margin-bottom: 2.5rem;
     }
 }
 
-@media (max-width: 600px) {
-    .login-form-section {
-        padding: 1rem;
-    }
-
-    .login-form-wrapper {
+@media (max-width: 100px) {
+    .card-formulario {
         padding: 1.5rem;
-        box-shadow: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
 
-    .title {
-        font-size: 2.2rem;
+    .titulo-principal {
+        font-size: 2.5rem;
         margin-bottom: 2rem;
     }
 
-    .login-header {
-        top: 1rem;
-        padding: 0.4rem 1rem;
-    }
-
-    .logo {
+    .logo-escola {
         height: 2.8rem;
     }
 
-    .school-name {
+    .nome-escola {
         font-size: 1rem;
     }
 }
