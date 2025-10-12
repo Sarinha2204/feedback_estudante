@@ -4,13 +4,12 @@ body{
 }
 
 .nav{
-    background-color: #004F9F;
+    background: linear-gradient(135deg, #004F9F 0%, #764ba2 100%);
     position: relative;      
     display: flex;    
     align-items: center;
     padding: 10px 20px;      
 }
-
 
 
 .img_escola{
@@ -29,6 +28,8 @@ body{
     display: flex;
     align-items: center;
 }
+
+
 
 .texto{
     color: white;
