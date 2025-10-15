@@ -13,6 +13,8 @@ import logoEscola from './logo_jt.png';
 const LoginScreen = () => {
   // url para a imagem de destaque da seção direita.
   const imageUrl = 'https://imgur.com/K9aLoVo.png';
+  const estrelaUrl = 'https://imgur.com/Nl20tqh.png';
+  const sobreposicao = 'https://imgur.com/rVNSFU7.png';
 
   return (
     // container principal que engloba toda a tela.
@@ -72,7 +74,22 @@ const LoginScreen = () => {
       <div 
         className="secao-imagem"
         style={{ backgroundImage: `url(${imageUrl})` }}
+      
       >
+        <img className='estrela-flutuante'
+        src={estrelaUrl} alt="Estrela decorativa brilhante" 
+        ></img>
+        <img className='estrela-flutuante2'
+        src={estrelaUrl} alt="Estrela decorativa brilhante" 
+        ></img>
+        <img className='estrela-flutuante3'
+        src={estrelaUrl} alt="Estrela decorativa brilhante" 
+        ></img>
+
+        <img className='sobreposicao'
+        src={sobreposicao} alt="Forma azul" 
+        ></img>
+      
       </div>
 
     </div>

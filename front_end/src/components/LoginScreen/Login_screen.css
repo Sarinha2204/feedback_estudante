@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-/* novo fundo unificado para toda a página. */
+/* fundo unificado para toda a página. */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #ffffff;
@@ -65,12 +65,12 @@ body {
 /* card principal do formulário, que continua com seu fundo branco. */
 .card-formulario {
     width: 100%;
-    max-width: 550px;
+    max-width: 460px;
     padding: 2.5rem;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    position: relative;
+    position: 1;
     left: 110px;
 }
 
@@ -84,7 +84,7 @@ body {
 
 /* estilo de gradiente para o título. */
 .titulo-gradiente {
-    background: linear-gradient(45deg, #0b74cf, #258de7);
+    background: linear-gradient(10deg, #0b74cf, #7678f2);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -153,10 +153,8 @@ body {
     z-index: 1;
     background-color: transparent;
     background-size: cover;
-    background-position: left center;
+    background-position: center;
     background-repeat: no-repeat;
-    /* IMAGEM PADRÃO PARA DESKTOP */
-    background-image: url('https://imgur.com/K9aLoVo.png');
 }
 
 
@@ -176,8 +174,6 @@ body {
         width: 100%;
         height: 100%;
         z-index: 1;
-        /* IMAGEM NOVA, SÓ PARA CELULAR */
-        background-image: url('https://imgur.com/L0P28PS.png');
     }
 
     /* a seção do formulário flutua por cima da imagem. */
@@ -186,7 +182,7 @@ body {
         width: 100%;
         height: 100%;
         z-index: 2;
-        background: rgba(247, 249, 252, 0.6);
+        background: rgba(231, 233, 244, 0.6);
         backdrop-filter: blur(5px);
     }
 
@@ -198,13 +194,13 @@ body {
     
     .card-formulario {
         left: 0;
-        width: 100%;
-        max-width: 520px;
+        width: 90%;
+        max-width: 460px;
     }
 
     .titulo-principal {
-        font-size: 2.5rem;
-        margin-bottom: 1.0rem;
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
     }
 }
 
@@ -226,4 +222,64 @@ body {
     .nome-escola {
         font-size: 1rem;
     }
+}
+
+/* Login_screen.css */
+
+/* --- MANTENHA ESTE BLOCO NO FINAL DO ARQUIVO --- */
+
+/* Estilo para a estrela decorativa flutuante */
+.estrela-flutuante {
+  position: absolute; /* Tira o elemento do fluxo normal da página. Essencial! */
+  z-index: 10;
+  top: 20vh;
+  right: 24vh;
+  width: 100px;
+  height: auto;
+
+  /* Animação opcional para dar um efeito de "brilho" */
+  animation: brilhar 4s infinite ease-in-out;
+}
+
+/* Definição da animação de brilho */
+@keyframes brilhar {
+  0%, 100% {
+    transform: scale(1) rotate(0deg); /* Tamanho e rotação normais */
+    opacity: 0.8;              /* Um pouco transparente */
+  }
+  50% {
+    transform: scale(1.1) rotate(4deg); /* Aumenta um pouco e gira */
+    opacity: 1;                          /* Totalmente visível */
+  }
+}
+
+/* Ajuste para telas menores (dentro do seu @media query existente) */
+@media (max-width: 1224px) {
+  .estrela-flutuante {
+    display: none; 
+  }
+
+}
+
+.estrela-flutuante2 {
+  position: absolute; 
+  z-index: 10;
+  top: 82vh;
+  right: -2vh;
+  width: 100px;
+  height: auto;
+
+  /* efeito de brilho */
+  animation: brilhar 4s infinite ease-in-out;
+}
+
+.estrela-flutuante3 {
+  position: absolute; 
+  z-index: 10;
+  top: 82vh;
+  right: 100vh;
+  width: 100px;
+  height: auto;
+
+  animation: brilhar 4s infinite ease-in-out;
 }
