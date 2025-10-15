@@ -8,13 +8,21 @@ import React from 'react';
 // importação da folha de estilos do componente.
 import './Login_screen.css'; 
 // importação do arquivo de imagem da logo.
-import logoEscola from './logo_jt.png';
+import logoEscola from '../../assets/logo_jt.png';
 
-const LoginScreen = () => {
+// <<< AJUSTE 1: Adicione { onLoginSuccess } aqui
+const LoginScreen = ({ onLoginSuccess }) => {
   // url para a imagem de destaque da seção direita.
   const imageUrl = 'https://imgur.com/K9aLoVo.png';
   const estrelaUrl = 'https://imgur.com/Nl20tqh.png';
   const sobreposicao = 'https://imgur.com/rVNSFU7.png';
+
+  // <<< AJUSTE 2: Adicione esta função inteira
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Impede o recarregamento da página
+    // Chama a função do App.js para trocar de tela
+    onLoginSuccess();
+  };
 
   return (
     // container principal que engloba toda a tela.
@@ -22,7 +30,7 @@ const LoginScreen = () => {
       
       {/* seção principal do formulário, à esquerda. */}
       <div className="secao-formulario">
-          
+        
         <header className="cabecalho">
           <img src={logoEscola} alt="Logo da Escola Estadual Padre João Tomes" className="logo-escola" />
           <h1 className="nome-escola">Escola Estadual Padre João Tomes</h1>
@@ -35,7 +43,8 @@ const LoginScreen = () => {
               <span className="titulo-gradiente">Feedback Discente</span>
             </h2>
 
-            <form className="formulario">
+            {/* <<< AJUSTE 3: Adicione o onSubmit={handleSubmit} aqui */}
+            <form className="formulario" onSubmit={handleSubmit}>
               <div className="grupo-input">
                 <label htmlFor="codigo-estudante">Código do Estudante (SGDE)</label>
                 <input 
@@ -74,7 +83,6 @@ const LoginScreen = () => {
       <div 
         className="secao-imagem"
         style={{ backgroundImage: `url(${imageUrl})` }}
-      
       >
         <img className='estrela-flutuante'
         src={estrelaUrl} alt="Estrela decorativa brilhante" 
@@ -97,4 +105,3 @@ const LoginScreen = () => {
 }
 
 export default LoginScreen;
-
