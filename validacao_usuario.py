@@ -32,7 +32,7 @@ def validar_login(sgde: str, senha: str) -> dict:
         estudante = cursor.fetchone()
 
         if not estudante:
-            return {"sucesso": False, "mensagem": "SGDE ou senha inválidos."}
+            return {"sucesso": False} # "SGDE ou senha inválidos."
 
         senha_banco = estudante["senha_hash"]
 
@@ -49,7 +49,7 @@ def validar_login(sgde: str, senha: str) -> dict:
                 conexao.commit()
 
         if not senha_correta:
-            return {"sucesso": False, "mensagem": "SGDE ou senha inválidos."}
+            return {"sucesso": False} # "SGDE ou senha inválidos."
 
         status = estudante.get("status", "ativo").lower()
         if status in ["transferido", "remanejado"]:
