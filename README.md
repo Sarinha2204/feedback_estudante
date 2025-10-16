@@ -6,3 +6,5 @@ Cada mudança deve ser feita na branch correspondente:
   Alterações do back-end → commit na branch de back-end
   Alterações do front-end → commit na branch de front-end
   Alterações do banco → commit na branch de banco_de_dados
+
+Posteriormente os commits serão feitos na branch de tests.
