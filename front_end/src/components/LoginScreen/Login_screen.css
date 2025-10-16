@@ -1,29 +1,33 @@
-/* importação da fonte do google fonts. */
+/* --- Estilos Globais e Tipografia --- */
+
+/* Importação da fonte Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-/* reset de estilos. */
+/* Reset de estilos para consistência entre navegadores */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* fundo unificado para toda a página. */
+/* Estilo base do corpo da página */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #ffffff;
 }
 
-/* container principal que organiza o layout da tela. */
+/* --- Layout Principal --- */
+
+/* Contêiner principal da tela */
 .tela-login {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     overflow: hidden;
     position: relative;
 }
 
-/* seção da esquerda, que contém o formulário. */
+/* Seção do formulário (esquerda) */
 .secao-formulario {
     width: 50%;
     display: flex;
@@ -36,7 +40,19 @@ body {
     background-color: transparent;
 }
 
-/* cabeçalho com logo e nome da escola. */
+/* Seção da imagem de destaque (direita) */
+.secao-imagem {
+    width: 50%;
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- Cabeçalho --- */
+
 .cabecalho {
     position: absolute;
     top: 1.5rem;
@@ -62,7 +78,9 @@ body {
     color: transparent;
 }
 
-/* card principal do formulário, que continua com seu fundo branco. */
+/* --- Componentes do Formulário --- */
+
+/* Card principal do formulário */
 .card-formulario {
     width: 100%;
     max-width: 460px;
@@ -70,11 +88,9 @@ body {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    position: 1;
-    left: 110px;
 }
 
-/* título "Feedback Discente". */
+/* Título principal da página */
 .titulo-principal {
     font-size: 3.8rem;
     font-weight: 800;
@@ -82,7 +98,7 @@ body {
     text-align: center;
 }
 
-/* estilo de gradiente para o título. */
+/* Efeito de gradiente para o texto do título */
 .titulo-gradiente {
     background: linear-gradient(10deg, #0b74cf, #7678f2);
     -webkit-background-clip: text;
@@ -90,7 +106,7 @@ body {
     color: transparent;
 }
 
-/* grupo de label e input do formulário. */
+/* Agrupador de label e input */
 .grupo-input {
     margin-bottom: 1.5rem;
 }
@@ -113,12 +129,14 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
+/* Estilo do input em foco */
 .grupo-input input:focus {
     outline: none;
     border-color: #4299e1;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
 }
 
+/* Botão de acessar do formulário */
 .botao-acessar {
     width: 100%;
     padding: 1.1rem;
@@ -138,6 +156,7 @@ body {
     transform: translateY(-2px);
 }
 
+/* Rodapé do card */
 .rodape-card {
     margin-top: 2.5rem;
     text-align: center;
@@ -146,27 +165,56 @@ body {
     line-height: 1.5;
 }
 
-/* seção da direita, com a imagem de destaque. */
-.secao-imagem {
-    width: 50%;
-    position: relative;
-    z-index: 1;
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* --- Elementos Decorativos e Animações --- */
+
+/* Estilos base para elementos flutuantes */
+.estrela-flutuante, .estrela-flutuante2, .estrela-flutuante3 {
+    position: absolute;
+    z-index: 10;
+    width: 100px;
+    height: auto;
+    animation: brilhar 4s infinite ease-in-out;
 }
 
+/* Posições específicas dos elementos */
+.estrela-flutuante {
+    top: 15%;
+    right: 20%;
+    width: 120px;
+}
 
-/* --- estilos para responsividade --- */
-@media (max-width: 1224px) {
-    /* no celular, o container vira o 'palco' para as camadas. */
+.estrela-flutuante2 {
+    bottom: 10%;
+    left: 5%;
+    width: 80px;
+}
+
+.estrela-flutuante3 {
+    bottom: 30%;
+    right: 5%;
+    width: 60px;
+}
+
+/* Animação de brilho e movimento */
+@keyframes brilhar {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1) rotate(4deg);
+        opacity: 1;
+    }
+}
+
+/* --- Design Responsivo --- */
+
+/* Estilos para tablets e telas menores (até 1024px) */
+@media (max-width: 1024px) {
     .tela-login {
-        position: relative;
         display: block;
     }
 
-    /* a imagem vira o fundo de tela inteira. */
     .secao-imagem {
         position: absolute;
         top: 0;
@@ -174,26 +222,24 @@ body {
         width: 100%;
         height: 100%;
         z-index: 1;
+        opacity: 0.15;
     }
 
-    /* a seção do formulário flutua por cima da imagem. */
     .secao-formulario {
         position: relative;
         width: 100%;
-        height: 100%;
+        min-height: 100vh;
         z-index: 2;
-        background: rgba(231, 233, 244, 0.6);
-        backdrop-filter: blur(5px);
+        background: transparent;
     }
 
     .cabecalho {
         position: static;
-        margin-bottom: 2rem;
         justify-content: center;
+        margin-bottom: 2rem;
     }
     
     .card-formulario {
-        left: 0;
         width: 90%;
         max-width: 460px;
     }
@@ -202,12 +248,17 @@ body {
         font-size: 3rem;
         margin-bottom: 2.5rem;
     }
+    
+    .estrela-flutuante, .estrela-flutuante2, .estrela-flutuante3, .sobreposicao {
+        display: none; 
+    }
 }
 
-@media (max-width: 100px) {
+/* Estilos para celulares (até 576px) */
+@media (max-width: 576px) {
     .card-formulario {
         padding: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        box-shadow: none;
     }
 
     .titulo-principal {
@@ -222,64 +273,4 @@ body {
     .nome-escola {
         font-size: 1rem;
     }
-}
-
-/* Login_screen.css */
-
-/* --- MANTENHA ESTE BLOCO NO FINAL DO ARQUIVO --- */
-
-/* Estilo para a estrela decorativa flutuante */
-.estrela-flutuante {
-  position: absolute; /* Tira o elemento do fluxo normal da página. Essencial! */
-  z-index: 10;
-  top: 20vh;
-  right: 24vh;
-  width: 100px;
-  height: auto;
-
-  /* Animação opcional para dar um efeito de "brilho" */
-  animation: brilhar 4s infinite ease-in-out;
-}
-
-/* Definição da animação de brilho */
-@keyframes brilhar {
-  0%, 100% {
-    transform: scale(1) rotate(0deg); /* Tamanho e rotação normais */
-    opacity: 0.8;              /* Um pouco transparente */
-  }
-  50% {
-    transform: scale(1.1) rotate(4deg); /* Aumenta um pouco e gira */
-    opacity: 1;                          /* Totalmente visível */
-  }
-}
-
-/* Ajuste para telas menores (dentro do seu @media query existente) */
-@media (max-width: 1224px) {
-  .estrela-flutuante {
-    display: none; 
-  }
-
-}
-
-.estrela-flutuante2 {
-  position: absolute; 
-  z-index: 10;
-  top: 82vh;
-  right: -2vh;
-  width: 100px;
-  height: auto;
-
-  /* efeito de brilho */
-  animation: brilhar 4s infinite ease-in-out;
-}
-
-.estrela-flutuante3 {
-  position: absolute; 
-  z-index: 10;
-  top: 82vh;
-  right: 100vh;
-  width: 100px;
-  height: auto;
-
-  animation: brilhar 4s infinite ease-in-out;
 }

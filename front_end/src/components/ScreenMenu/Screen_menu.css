@@ -1,11 +1,13 @@
-/* Estilos gerais para o corpo da página do menu */
+/* --- Layout e Estilos Globais --- */
+
 .menu-wrapper {
     font-family: 'Poppins', sans-serif;
     background-color: #ffffff;
     min-height: 100vh;
 }
 
-/* --- Estilos para o Cabeçalho --- */
+/* --- Cabeçalho --- */
+
 .cabecalho-menu {
     width: 100%;
     padding: 1rem 2.5rem;
@@ -22,7 +24,8 @@
     align-items: center;
 }
 
-/* --- Estilos para o Conteúdo Principal --- */
+/* --- Conteúdo Principal --- */
+
 .menu-title {
     font-size: 4rem;
     font-weight: 800;
@@ -39,16 +42,17 @@
     color: #2f3234;
 }
 
-/* --- Estilos para os Cards de Opções --- */
+/* --- Cards de Seleção --- */
+
 .custom-card {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     border: none;
     transition: all 0.2s ease-in-out;
-    height: 60vh;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .custom-card:hover {
@@ -59,16 +63,16 @@
 .custom-card .card-img-top {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    height: 200px;
     object-fit: cover;
+    aspect-ratio: 16 / 9;
 }
+
 
 .custom-card .card-body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    padding: 1.25rem;
 }
 
 .custom-card .card-title {
@@ -78,20 +82,19 @@
 
 .custom-card .card-text {
     color: #6c757d;
+    flex-grow: 1;
 }
 
-.card-title{
+.card-title {
     margin-top: 10px;
     font-size: 20px;
     align-self: center;
 }
 
-
-
 .card-button {
     width: 100%;
     padding: 0.8rem;
-    margin-top: auto;
+    margin-top: 1rem;
     border: none;
     border-radius: 1rem;
     color: #ffffff;
@@ -109,8 +112,8 @@
     background: linear-gradient(90deg, #135f82, #5765bf);
 }
 
+/* --- Menu de Perfil (Dropdown) --- */
 
-/* --- Estilos Corrigidos para o Menu Dropdown do Perfil --- */
 .perfil-menu-container {
     position: relative;
 }
@@ -182,14 +185,37 @@
     background-color: transparent;
     border: 0;
     text-align: left;
-    background-color:rgb(254, 254, 254) ;
     transition: background-color 0.2s ease;
 }
 
 .dropdown-item:hover {
-    background-color: #ffffff;
+    background-color: #f8f9fa;
 }
 
 .dropdown-item-sair {
     color: #dc3545;
+}
+
+/* --- Design Responsivo --- */
+
+/* Estilos para tablets (até 768px) */
+@media (max-width: 768px) {
+    .menu-title {
+        font-size: 2.5rem;
+    }
+
+    .cabecalho-menu {
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* Estilos para celulares (até 576px) */
+@media (max-width: 576px) {
+    .menu-title {
+        font-size: 2rem;
+    }
+
+    .nome-escola {
+        display: none;
+    }
 }

@@ -1,21 +1,34 @@
+/**
+ * Componente ScreenMenu
+ * Renderiza a tela principal após o login, exibindo as turmas para avaliação.
+ * @param {object} props - Propriedades recebidas pelo componente.
+ * @param {function} props.onLogout - Função de callback para executar o logout do usuário.
+ */
 import React, { useState } from 'react';
-import './Screen_menu.css'; 
+
+// Importação de recursos
+import './Screen_menu.css';
 import logoEscola from '../../assets/logo_jt.png';
 
 const ScreenMenu = ({ onLogout }) => {
+  // Estado para controlar a visibilidade do menu dropdown do perfil
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Alterna a visibilidade do menu dropdown
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <div className="menu-wrapper">
+      {/* Cabeçalho da página */}
       <header className="cabecalho-menu">
         <div className="identidade-escola">
           <img src={logoEscola} alt="Logo da Escola" className="logo-escola" />
           <h1 className="nome-escola">Escola Estadual Padre João Tomes</h1>
         </div>
+
+        {/* Menu de perfil do usuário */}
         <div className="perfil-menu-container">
           <div className="perfil-avatar" onClick={toggleMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -23,6 +36,8 @@ const ScreenMenu = ({ onLogout }) => {
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
           </div>
+
+          {/* Renderização condicional do menu dropdown */}
           {isMenuOpen && (
             <div className="dropdown-menu">
               <div className="dropdown-header">
@@ -36,7 +51,8 @@ const ScreenMenu = ({ onLogout }) => {
           )}
         </div>
       </header>
-      
+
+      {/* Conteúdo principal da página */}
       <main className="container py-5">
         <div className="text-center mb-5">
           <h1 className="menu-title">Feedback Discente</h1>
@@ -44,16 +60,16 @@ const ScreenMenu = ({ onLogout }) => {
             Selecione sua turma para realizar a avaliação.
           </p>
         </div>
-        
-        {/* A alteração para aumentar o espaço está nesta linha (g-4) */}
+
+        {/* Grid com os cards das turmas */}
         <div className="row justify-content-center g-5">
-          
-          {/* Repare que removemos o p-3 daqui */}
+
+          {/* Card de Turma */}
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
-              <img 
-                src="https://imgur.com/K9nLY9Q.png" 
-                className="card-img-top" 
+              <img
+                src="https://imgur.com/K9nLY9Q.png"
+                className="card-img-top"
                 alt="Imagem da turma"
               />
               <div className="card-body">
@@ -65,12 +81,13 @@ const ScreenMenu = ({ onLogout }) => {
               </div>
             </div>
           </div>
-          
+
+          {/* Card de Turma */}
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
-              <img 
-                src="https://imgur.com/K9nLY9Q.png" 
-                className="card-img-top" 
+              <img
+                src="https://imgur.com/K9nLY9Q.png"
+                className="card-img-top"
                 alt="Imagem da turma"
               />
               <div className="card-body">
@@ -82,13 +99,13 @@ const ScreenMenu = ({ onLogout }) => {
               </div>
             </div>
           </div>
-          
-          {/* E daqui também */}
+
+          {/* Card de Turma */}
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
-              <img 
-                src="https://imgur.com/K9nLY9Q.png" 
-                className="card-img-top" 
+              <img
+                src="https://imgur.com/K9nLY9Q.png"
+                className="card-img-top"
                 alt="Imagem da turma"
               />
               <div className="card-body">

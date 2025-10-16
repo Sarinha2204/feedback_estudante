@@ -1,34 +1,34 @@
 /**
- * componente: LoginScreen
- * propósito: renderiza a página de login da aplicação, contendo o formulário
- * de autenticação e elementos de identidade visual.
+ * Componente LoginScreen
+ * Renderiza a página de login da aplicação.
+ * @param {object} props - Propriedades recebidas pelo componente.
+ * @param {function} props.onLoginSuccess - Função de callback executada no sucesso do login.
  */
 import React from 'react';
 
-// importação da folha de estilos do componente.
+// Importação de recursos
 import './Login_screen.css'; 
-// importação do arquivo de imagem da logo.
 import logoEscola from '../../assets/logo_jt.png';
 
-// <<< AJUSTE 1: Adicione { onLoginSuccess } aqui
 const LoginScreen = ({ onLoginSuccess }) => {
-  // url para a imagem de destaque da seção direita.
+  // URLs das imagens utilizadas no componente
   const imageUrl = 'https://imgur.com/K9aLoVo.png';
   const estrelaUrl = 'https://imgur.com/Nl20tqh.png';
-  const sobreposicao = 'https://imgur.com/rVNSFU7.png';
 
-  // <<< AJUSTE 2: Adicione esta função inteira
+  /**
+   * Lida com a submissão do formulário de login.
+   * @param {React.FormEvent} event - O evento de submissão do formulário.
+   */
   const handleSubmit = (event) => {
-    event.preventDefault(); // Impede o recarregamento da página
-    // Chama a função do App.js para trocar de tela
-    onLoginSuccess();
+    event.preventDefault(); // Impede o comportamento padrão de recarregar a página
+    onLoginSuccess(); // Executa a função para sinalizar o login bem-sucedido
   };
 
   return (
-    // container principal que engloba toda a tela.
+    // Contêiner principal que engloba toda a tela
     <div className="tela-login">
       
-      {/* seção principal do formulário, à esquerda. */}
+      {/* Seção principal do formulário, à esquerda */}
       <div className="secao-formulario">
         
         <header className="cabecalho">
@@ -36,14 +36,13 @@ const LoginScreen = ({ onLoginSuccess }) => {
           <h1 className="nome-escola">Escola Estadual Padre João Tomes</h1>
         </header>
 
-        {/* container do formulário de login. */}
+        {/* Card que contém o formulário de login */}
         <div className="card-formulario">
           <main>
             <h2 className="titulo-principal">
               <span className="titulo-gradiente">Feedback Discente</span>
             </h2>
 
-            {/* <<< AJUSTE 3: Adicione o onSubmit={handleSubmit} aqui */}
             <form className="formulario" onSubmit={handleSubmit}>
               <div className="grupo-input">
                 <label htmlFor="codigo-estudante">Código do Estudante (SGDE)</label>
@@ -79,7 +78,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
         </div>
       </div>
       
-      {/* seção da imagem de destaque, à direita. */}
+      {/* Seção da imagem de destaque, à direita */}
       <div 
         className="secao-imagem"
         style={{ backgroundImage: `url(${imageUrl})` }}
@@ -92,10 +91,6 @@ const LoginScreen = ({ onLoginSuccess }) => {
         ></img>
         <img className='estrela-flutuante3'
         src={estrelaUrl} alt="Estrela decorativa brilhante" 
-        ></img>
-
-        <img className='sobreposicao'
-        src={sobreposicao} alt="Forma azul" 
         ></img>
       
       </div>
