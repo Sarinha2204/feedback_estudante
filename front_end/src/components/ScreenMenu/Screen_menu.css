@@ -1,0 +1,221 @@
+/* --- Layout e Estilos Globais --- */
+
+.menu-wrapper {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+/* --- Cabeçalho --- */
+
+.cabecalho-menu {
+    width: 100%;
+    padding: 1rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.identidade-escola {
+    display: flex;
+    align-items: center;
+}
+
+/* --- Conteúdo Principal --- */
+
+.menu-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(10deg, #0b74cf, #7678f2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.menu-subtitle {
+    margin-top: 1vh;
+    font-size: 1.1rem;
+    color: #2f3234;
+}
+
+/* --- Cards de Seleção --- */
+
+.custom-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: none;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card .card-img-top {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+}
+
+
+.custom-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem;
+}
+
+.custom-card .card-title {
+    font-weight: 600;
+    color: #0d5399;
+}
+
+.custom-card .card-text {
+    color: #6c757d;
+    flex-grow: 1;
+}
+
+.card-title {
+    margin-top: 10px;
+    font-size: 20px;
+    align-self: center;
+}
+
+.card-button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, #0d7eb2, #7a8bf7);
+}
+
+.card-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(90deg, #135f82, #5765bf);
+}
+
+/* --- Menu de Perfil (Dropdown) --- */
+
+.perfil-menu-container {
+    position: relative;
+}
+
+.perfil-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.perfil-avatar:hover {
+    border-color: #1082b7;
+}
+
+.perfil-avatar svg {
+    color: #0b6cc1;
+}
+
+.perfil-menu-container .dropdown-menu {
+    display: block !important;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 260px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: 1px solid #f0f0f0;
+    padding: 0.5rem 0;
+}
+
+.dropdown-header {
+    padding: 0.75rem 1.25rem;
+    text-align: left;
+}
+
+.dropdown-header strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #0b4786;
+}
+
+.dropdown-header span {
+    font-size: 0.8rem;
+    color: #07335a;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #e9ecef;
+    margin: 0.5rem 0;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    color: #000000;
+    text-decoration: none;
+    background-color: transparent;
+    border: 0;
+    text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-item-sair {
+    color: #dc3545;
+}
+
+/* --- Design Responsivo --- */
+
+/* Estilos para tablets (até 768px) */
+@media (max-width: 768px) {
+    .menu-title {
+        font-size: 2.5rem;
+    }
+
+    .cabecalho-menu {
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* Estilos para celulares (até 576px) */
+@media (max-width: 576px) {
+    .menu-title {
+        font-size: 2rem;
+    }
+
+    .nome-escola {
+        display: none;
+    }
+}
