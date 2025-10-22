@@ -1,10 +1,5 @@
-Aqui está um **único arquivo `README.md` completo e bem estruturado**, descrevendo separadamente as necessidades e instruções para o **banco de dados MySQL**, o **backend Flask (Python)** e o **frontend React**.
-Ele está formatado para uso direto no GitHub.
 
----
-
-````markdown
-# 🎓 Projeto de Faculdade — Sistema Feedback Estudante
+# 🎓 Sistema Feedback Estudante
 
 Este repositório contém um sistema dividido em **três partes principais**:
 
