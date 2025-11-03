@@ -12,8 +12,14 @@ import logoEscola from '../../assets/logo_jt.png';
 
 const LoginScreen = ({ onLoginSuccess }) => {
   // URLs das imagens utilizadas no componente
-  const imageUrl = 'https://imgur.com/K9aLoVo.png';
-  const estrelaUrl = 'https://imgur.com/Nl20tqh.png';
+  const imageUrl = 'https://imgur.com/eR8zQhO.png';
+  const estrelaUrl = 'https://imgur.com/hwRX473.png';
+  const estrelaUrl2 = 'https://imgur.com/TQDL8zJ.png';
+  const estrelaUrl3 = 'https://imgur.com/RULPqHD.png';
+  const estrelaUrl4 = 'https://imgur.com/Ps4M4vg.png';
+  const estrelaUrl5 = 'https://imgur.com/4FfIQI5.png';
+  const estrelaUrl6 = 'https://imgur.com/FWXy96Y.png';
+  const estrelaUrl7 = 'https://imgur.com/Zcv6aAd.png'
 
   /**
    * Lida com a submissão do formulário de login.
@@ -61,7 +67,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
                   type="password" 
                   id="senha" 
                   name="senha"
-                  placeholder="********" 
+                  placeholder="****" 
                   required
                 />
               </div>
@@ -78,6 +84,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
         </div>
       </div>
       
+      {/* (AQUI) VOLTAMOS AO SEU CÓDIGO ORIGINAL */}
       {/* Seção da imagem de destaque, à direita */}
       <div 
         className="secao-imagem"
@@ -90,8 +97,48 @@ const LoginScreen = ({ onLoginSuccess }) => {
         src={estrelaUrl} alt="Estrela decorativa brilhante" 
         ></img>
         <img className='estrela-flutuante3'
-        src={estrelaUrl} alt="Estrela decorativa brilhante" 
+        src={estrelaUrl2} alt="Estrela decorativa brilhante" 
         ></img>
+        <img className='estrela-flutuante4'
+        src={estrelaUrl4} alt="Estrela dourada isolada" 
+        ></img>
+        <img className='estrela-flutuante5'
+        src={estrelaUrl3} alt="Estrela decorativa brilhante" 
+        ></img>
+      <img className='estrela-flutuante6'
+        src={estrelaUrl7} alt="Estrela decorativa brilhante" 
+        ></img>
+        <img className='estrela-flutuante7'
+        src={estrelaUrl4} alt="Estrela dourada isolada" 
+        ></img>
+        <img className='estrela-flutuante8'
+        src={estrelaUrl4} alt="Estrela dourada isolada" 
+        ></img>
+        <img className='estrela-flutuante9'
+        src={estrelaUrl5} alt="Estrela azul clara isolada" 
+        ></img>
+        <img className='estrela-flutuante10'
+        src={estrelaUrl5} alt="Estrela azul clara isolada" 
+        ></img>
+        <img className='estrela-flutuante11'
+        src={estrelaUrl6} alt="Estrela azul clara isolada" 
+        ></img>
+        <img className='estrela-flutuante12'
+        src={estrelaUrl6} alt="Estrela azul clara isolada" 
+        ></img>
+        <img className='estrela-flutuante13'
+        src={estrelaUrl6} alt="Estrela azul clara isolada" 
+        ></img>
+        <img className='estrela-flutuante14'
+        src={estrelaUrl4} alt="Estrela azul clara isolada" 
+        ></img>
+        <img className='estrela-flutuante15'
+        src={estrelaUrl4} alt="Estrela azul clara isolada" 
+        ></img>
+        <img className='estrela-flutuante16'
+        src={estrelaUrl4} alt="Estrela azul clara isolada" 
+        ></img>
+        
       
       </div>
 
@@ -99,4 +146,4 @@ const LoginScreen = ({ onLoginSuccess }) => {
   );
 }
 
-export default LoginScreen;
+export default LoginScreen

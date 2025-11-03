@@ -68,15 +68,12 @@ const ScreenMenu = ({ onLogout }) => {
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img
-                src="https://imgur.com/K9nLY9Q.png"
+                src="https://imgur.com/psBf6o6.png"
                 className="card-img-top"
                 alt="Imagem da turma"
               />
               <div className="card-body">
                 <h5 className="card-title">1° Ano A</h5>
-                <p className="card-text">
-                  Avalie a didática, o material de apoio e o relacionamento com os professores.
-                </p>
                 <button className="card-button">Avaliar</button>
               </div>
             </div>
@@ -86,15 +83,12 @@ const ScreenMenu = ({ onLogout }) => {
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img
-                src="https://imgur.com/K9nLY9Q.png"
+                src="https://imgur.com/Px3PDoJ.png"
                 className="card-img-top"
                 alt="Imagem da turma"
               />
               <div className="card-body">
                 <h5 className="card-title">2° Ano A</h5>
-                <p className="card-text">
-                  Avalie a didática, o material de apoio e o relacionamento com os professores.
-                </p>
                 <button className="card-button">Avaliar</button>
               </div>
             </div>
@@ -104,15 +98,12 @@ const ScreenMenu = ({ onLogout }) => {
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img
-                src="https://imgur.com/K9nLY9Q.png"
+                src="https://imgur.com/ULLAwaO.png"
                 className="card-img-top"
                 alt="Imagem da turma"
               />
               <div className="card-body">
                 <h5 className="card-title">3° Ano A</h5>
-                <p className="card-text">
-                  Avalie a didática, o material de apoio e o relacionamento com os professores.
-                </p>
                 <button className="card-button">Avaliar</button>
               </div>
             </div>
