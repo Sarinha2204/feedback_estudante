@@ -48,33 +48,61 @@ CREATE TABLE Matriculas (
 );
 
 -- AVALIAÇÂO DO DOCENTE
-CREATE TABLE Avaliacao (
-	id INT AUTO_INCREMENT PRIMARY KEY ,
-    bimestre VARCHAR(20) NOT NULL,
+
+CREATE TABLE perguntas (
+    id INT PRIMARY KEY,
+    texto VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE avaliacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     estudante_id INT NOT NULL,
-    professor_id INT NOT NULL,
     disciplina_id INT NOT NULL,
-    nt1 TINYINT NOT NULL, 
-    com1 VARCHAR(100),
-	nt2 TINYINT NOT NULL,
-    com2 VARCHAR(100),
-	nt3 TINYINT NOT NULL,
-    com3 VARCHAR(100),
-    nt4 TINYINT NOT NULL, 
-    com4 VARCHAR(100),
-    nt5 TINYINT NOT NULL,
-	com5 VARCHAR(100),
-    nt6 TINYINT NOT NULL,
-	com6 VARCHAR(100),
-    nt7 TINYINT NOT NULL, 
-    com7 VARCHAR(100),   
-    nt8 TINYINT NOT NULL,
-	com8 VARCHAR(100),
-    nt9 TINYINT NOT NULL,
-	com9 VARCHAR(100),
-    nt10 TINYINT NOT NULL,
-    com10 VARCHAR(100), 
-    FOREIGN KEY (estudante_id) REFERENCES Estudantes(sgde),
-    FOREIGN KEY (professor_id) REFERENCES Professores(id),
-    FOREIGN KEY (disciplina_id) REFERENCES Disciplinas(id)
+    bimestre INT NOT NULL,
+    FOREIGN KEY (estudante_id) REFERENCES estudantes(sgde),
+    FOREIGN KEY (disciplina_id) REFERENCES disciplinas(id)
+);
+
+
+-- Respostas (nota e observação por pergunta/professor)
+CREATE TABLE respostas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    avaliacao_id INT NOT NULL,
+    nota1 INT NOT NULL,
+    comen1 TEXT,
+    nota2 INT NOT NULL,
+    comen2 TEXT,
+    nota3 INT NOT NULL,
+    comen3 TEXT,
+    nota4 INT NOT NULL,
+    comen4 TEXT,
+    nota5 INT NOT NULL,
+    comen5 TEXT,
+    nota6 INT NOT NULL,
+    comen6 TEXT,
+    nota7 INT NOT NULL,
+    comen7 TEXT,
+    nota8 INT NOT NULL,
+    comen8 TEXT,
+    nota9 INT NOT NULL,
+    comen9 TEXT,
+    nota10 INT NOT NULL,
+    comen10 TEXT,
+    FOREIGN KEY (avaliacao_id) REFERENCES avaliacoes(id)
+);
+
+
+-- Administradores
+CREATE TABLE administradores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    usuario VARCHAR(50) UNIQUE NOT NULL,
+    senha VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE configuracoes(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	bimestre INT NOT NULL,
+    estado VARCHAR(50) NOT NULL
 );
