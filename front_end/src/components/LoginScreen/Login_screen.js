@@ -67,7 +67,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
                   type="password" 
                   id="senha" 
                   name="senha"
-                  placeholder="****" 
+                  placeholder="******" 
                   required
                 />
               </div>
@@ -77,7 +77,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
           </main>
           
           <footer className="rodape-card">
-            <p>
+            <p id='textoRodape'>
               Caso não consiga acessar o sistema, entre em contato com a Direção da Escola para regularizar seu acesso.
             </p>
           </footer>
@@ -137,6 +137,12 @@ const LoginScreen = ({ onLoginSuccess }) => {
         ></img>
         <img className='estrela-flutuante16'
         src={estrelaUrl4} alt="Estrela azul clara isolada" 
+        ></img>
+        <img className='estrela-flutuante17'
+        src={estrelaUrl7} alt="Estrela decorativa brilhante" 
+        ></img>
+        <img className='estrela-flutuante18'
+        src={estrelaUrl6} alt="Estrela decorativa brilhante" 
         ></img>
         
       

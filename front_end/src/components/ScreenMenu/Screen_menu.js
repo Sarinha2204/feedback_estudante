@@ -4,11 +4,11 @@
  * @param {object} props - Propriedades recebidas pelo componente.
  * @param {function} props.onLogout - Função de callback para executar o logout do usuário.
  */
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 // Importação de recursos
-import './Screen_menu.css';
-import logoEscola from '../../assets/logo_jt.png';
+import "./Screen_menu.css";
+import logoEscola from "../../assets/logo_jt.png";
 
 const ScreenMenu = ({ onLogout }) => {
   // Estado para controlar a visibilidade do menu dropdown do perfil
@@ -31,7 +31,17 @@ const ScreenMenu = ({ onLogout }) => {
         {/* Menu de perfil do usuário */}
         <div className="perfil-menu-container">
           <div className="perfil-avatar" onClick={toggleMenu}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -45,8 +55,16 @@ const ScreenMenu = ({ onLogout }) => {
                 <span>3º ano A - 2025</span>
               </div>
               <div className="dropdown-divider"></div>
-              <a href="#!" className="dropdown-item">Trocar senha</a>
-              <a href="#!" onClick={onLogout} className="dropdown-item dropdown-item-sair">Sair</a>
+              <a href="#!" className="dropdown-item">
+                Trocar senha
+              </a>
+              <a
+                href="#!"
+                onClick={onLogout}
+                className="dropdown-item dropdown-item-sair"
+              >
+                Sair
+              </a>
             </div>
           )}
         </div>
@@ -63,12 +81,11 @@ const ScreenMenu = ({ onLogout }) => {
 
         {/* Grid com os cards das turmas */}
         <div className="row justify-content-center g-5">
-
           {/* Card de Turma */}
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img
-                src="https://imgur.com/psBf6o6.png"
+                src="https://imgur.com/JQmAwlR.png"
                 className="card-img-top"
                 alt="Imagem da turma"
               />
@@ -83,7 +100,7 @@ const ScreenMenu = ({ onLogout }) => {
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img
-                src="https://imgur.com/Px3PDoJ.png"
+                src="https://imgur.com/zCepyyW.png"
                 className="card-img-top"
                 alt="Imagem da turma"
               />
@@ -98,7 +115,7 @@ const ScreenMenu = ({ onLogout }) => {
           <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img
-                src="https://imgur.com/ULLAwaO.png"
+                src="https://imgur.com/4lwcDxZ.png"
                 className="card-img-top"
                 alt="Imagem da turma"
               />
