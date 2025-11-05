@@ -1,0 +1,418 @@
+/* --- Importação da Fonte --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* --- Container Principal --- */
+.tela-relatorio-wrapper {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 80px; /* Espaço para o cabeçalho fixo */
+}
+
+/* --- Layout Máximo (Centraliza o conteúdo) --- */
+.largura-maxima {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Cabeçalho Fixo (Estilo do Login) --- */
+.cabecalho-fixo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 50;
+  padding: 0 2.5vw;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+.cabecalho-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.container-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
+}
+.logo-escola {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+.nome-escola {
+  font-size: clamp(1rem, 1.1vw, 1.3rem);
+  font-weight: 600;
+  background: linear-gradient(45deg, #0b74cf, #887dec);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.botao-sair {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(228, 228, 228);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #0d7eb2, #4282e2);
+}
+.botao-sair:hover {
+  background: linear-gradient(60deg, #a52626, #630303);
+  transform: translateY(-2px);
+}
+
+/* --- Título Principal (Gradiente) --- */
+.titulo-gradiente {
+  background: linear-gradient(90deg, #519fe7, #7a8bf7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(2.5rem, 3.5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+/* --- Corpo Principal --- */
+.conteudo-principal {
+  padding: 1.5rem;
+}
+
+/* Grid de Estatísticas (Cards coloridos) */
+.grid-estatisticas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Card de Estatística --- */
+.card-estatistica {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.card-estatistica-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.card-estatistica-titulo-grupo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+.card-estatistica-titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.card-estatistica-label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.card-estatistica-icone {
+  opacity: 0.7;
+}
+.card-estatistica-subtitulo {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+/* --- Card Genérico (Branco, com sombra) --- */
+.card-geral {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+.titulo-card {
+  font-size: 1.25rem;
+  font-weight: 600;
+  /* A margem inferior é controlada pelo 'cabecalho-card-recolhivel' */
+  color: #374151;
+}
+
+/* --- Cabeçalho de Card Recolhível --- */
+.cabecalho-card-recolhivel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem; /* Espaçamento padrão do título */
+}
+.cabecalho-card-recolhivel .titulo-card {
+  margin-bottom: 0; /* Remove a margem do título */
+}
+.icone-recolher {
+  color: #6b7280;
+  transition: transform 0.3s ease-in-out;
+}
+.icone-recolher.recolhido {
+  transform: rotate(-180deg); /* Gira para cima */
+}
+
+/* --- Seção de Filtros --- */
+.card-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.grid-filtros {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.dropdown-filtro {
+  flex: 1;
+  min-width: 150px;
+}
+.dropdown-filtro label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+.dropdown-filtro-caixa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease-in-out;
+}
+.dropdown-filtro-caixa:focus-within {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+.dropdown-filtro-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #374151;
+}
+.dropdown-filtro-conteudo span {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.dropdown-filtro-conteudo svg {
+  color: #3b82f6;
+}
+
+/* --- Grids (Gráficos e Tabelas) --- */
+.grid-graficos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem; /* Espaço entre seções */
+}
+.grid-tabelas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem; /* Espaço no final da página */
+}
+
+/* --- Container do Gráfico (Controla altura e animação) --- */
+.container-grafico {
+  width: 100%;
+  height: 45rem; /* Altura que você definiu */
+  overflow: hidden;
+  transition: height 0.4s ease-out, opacity 0.2s 0.1s ease-out, margin-top 0.4s ease-out;
+  opacity: 1;
+  margin-top: 0;
+}
+.container-grafico.recolhido {
+  height: 0;
+  opacity: 0;
+  margin-top: -1rem; /* Compensa o padding do card */
+  transition: height 0.4s ease-out, opacity 0.1s ease-out, margin-top 0.4s ease-out;
+}
+
+/* --- Tabela --- */
+.container-tabela {
+  overflow-x: auto;
+}
+.tabela-relatorio {
+  min-width: 100%;
+  border-collapse: collapse;
+}
+.tabela-relatorio thead {
+  background-color: #f3f4f6;
+}
+.tabela-relatorio th,
+.tabela-relatorio td {
+  border-bottom: 1px solid #e5e7eb;
+}
+.tabela-relatorio th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.tabela-relatorio tbody {
+  background-color: #ffffff;
+}
+.tabela-relatorio td {
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  color: #374151;
+  vertical-align: middle;
+}
+.tabela-relatorio .td-destaque-nome {
+  color: #1f2937;
+  font-weight: 500;
+}
+.tabela-relatorio .td-destaque-final {
+  color: #1f2937;
+  font-weight: 700;
+}
+.tabela-relatorio tbody tr:last-child td {
+  border-bottom: none;
+}
+.tabela-relatorio tr:hover {
+  background-color: #f9fafb;
+}
+
+/* --- Barra de Busca --- */
+.cabecalho-tabela {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+.barra-busca {
+  position: relative;
+}
+.barra-busca input {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+  color: #1a202c;
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.barra-busca input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+.barra-busca svg {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+/* --- Seção das Tabelas Menores --- */
+.container-tabelas-menores {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Lista de Comentários --- */
+.container-lista-comentarios {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bloco-comentario {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+}
+.bloco-comentario:last-child {
+  border-bottom: none;
+}
+.comentario-cabecalho {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.comentario-professor {
+  font-weight: 600;
+  color: #1f2937;
+}
+.comentario-pergunta {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+.comentario-texto {
+  font-size: 0.875rem;
+  color: #374151;
+  font-style: italic;
+}
+
+/* --- Responsividade (Grid) --- */
+@media (min-width: 1024px) {
+  .grid-graficos,
+  .grid-tabelas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .grid-graficos .col-span-2,
+  .grid-tabelas .col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+  .grid-graficos .card-geral,
+  .grid-tabelas .card-geral {
+    margin-bottom: 0;
+  }
+}
+
+/* --- Responsividade (Header) --- */
+@media (max-width: 768px) {
+  .nome-escola {
+    display: none;
+  }
+  .botao-sair {
+    padding: 0.5rem;
+    border-radius: 9999px;
+  }
+  .botao-sair svg {
+    margin-left: 0 !important;
+  }
+  .botao-sair {
+    font-size: 0; /* Esconde o texto "Sair" */
+  }
+  .titulo-gradiente {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+}

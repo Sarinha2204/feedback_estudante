@@ -86,7 +86,7 @@ body {
     /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
     font-size: clamp(1rem, 1.1vw, 1.3rem);
     font-weight: 600;
-    background: linear-gradient(45deg, #0b74cf, #312c62);
+    background: linear-gradient(45deg, #0b74cf, #9090ec);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
