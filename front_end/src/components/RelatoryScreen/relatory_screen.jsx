@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-// Importa a folha de estilos dedicada para este componente
+import React, { useState, useMemo } from "react";
+// Importa a folha de estilos principal
 import "./relatory_screen.css";
 
-// Importações de bibliotecas de gráficos (recharts) e ícones (lucide)
+// Importações de bibliotecas
 import {
   BarChart,
   Bar,
@@ -11,8 +11,6 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  PieChart,
-  Pie,
   Cell,
   LabelList,
 } from "recharts";
@@ -24,39 +22,48 @@ import {
   GraduationCap,
   LogOut,
   ChevronDown,
-  ChevronUp,
   Star,
-  MessageSquare,
   CheckCircle,
+  ArrowLeft, // <--- MUDANÇA: Ícone de Voltar
   LucideLaugh,
-} from "lucide-react";
+} from "lucide-react"; // (Limpei os imports não usados)
 
-// --- DADOS MOCKADOS (Substituir pela API) ---
-// Estes são dados de exemplo para o front-end poder renderizar o layout.
+// Importa a lógica de cor
+import { definirCorDaNota } from "./relatorio_utils/logicaGraficos.js";
+
+// Importa os subcomponentes
+import CardEstatistica from "./relatorio_subcomponentes/CardEstatistica.jsx";
+import DropdownFiltro from "./relatorio_subcomponentes/DropdownFiltro.jsx";
+import TabelaProfessores from "./relatorio_subcomponentes/TabelaProfessores.jsx";
+import TabelaLegenda from "./relatorio_subcomponentes/TabelaLegenda.jsx";
+import ListaComentarios from "./relatorio_subcomponentes/ListaComentarios.jsx";
+import ModalDetalhesProfessor from "./relatorio_subcomponentes/ModalDetalhesProfessor.jsx";
+
+
+// --- DADOS MOCKADOS (Como você deixou) ---
 const DADOS_CARDS_SUPERIORES = [
   {
     titulo: "4.2",
     label: "Estrelas",
     subtitulo: "Média Geral",
-    cor: "#ebb81fff",
+    background: "linear-gradient(45deg, #0b74cf, #887dec)",
     icone: <Star size={20} />,
   },
   {
     titulo: "152",
     label: "Respostas",
     subtitulo: "Total de Avaliações",
-    cor: "#3b82f6",
+    background: "linear-gradient(45deg, #0b74cf, #887dec)",
     icone: <CheckCircle size={20} />,
   },
   {
     titulo: "12",
     label: "Professores",
     subtitulo: "Avaliados",
-    cor: "#a83bf6ff",
+    background: "linear-gradient(45deg, #0b74cf, #887dec)",
     icone: <Users size={20} />,
   },
 ];
-
 const DADOS_GRAFICO_DESTAQUES = [
   { nome: "Prof. Carla Dias", score: 4.8 },
   { nome: "Prof. Ana Silva", score: 4.5 },
@@ -64,7 +71,6 @@ const DADOS_GRAFICO_DESTAQUES = [
   { nome: "Prof. Bruno Costa", score: 4.1 },
   { nome: "Prof. Daniel M.", score: 3.7 },
 ];
-
 const DADOS_GRAFICO_PERGUNTAS = [
   { nome: "Didática", score: 4.1 },
   { nome: "Clareza", score: 4.5 },
@@ -73,7 +79,6 @@ const DADOS_GRAFICO_PERGUNTAS = [
   { nome: "Relacionamento", score: 4.3 },
   { nome: "Avaliações", score: 3.8 },
 ];
-
 const DADOS_TABELA_PROFESSORES = [
   {
     id: "T001",
@@ -82,6 +87,14 @@ const DADOS_TABELA_PROFESSORES = [
     media: 4.5,
     respostas: 25,
     comentarios: 5,
+    notasPorPergunta: [
+      { nome: "Didática", score: 4.8 },
+      { nome: "Clareza", score: 4.7 },
+      { nome: "Material", score: 4.0 },
+      { nome: "Pontualidade", score: 5.0 },
+      { nome: "Relacionamento", score: 4.2 },
+      { nome: "Avaliações", score: 4.3 },
+    ],
   },
   {
     id: "T002",
@@ -90,6 +103,14 @@ const DADOS_TABELA_PROFESSORES = [
     media: 4.1,
     respostas: 22,
     comentarios: 3,
+    notasPorPergunta: [
+      { nome: "Didática", score: 4.2 },
+      { nome: "Clareza", score: 4.5 },
+      { nome: "Material", score: 3.5 },
+      { nome: "Pontualidade", score: 4.0 },
+      { nome: "Relacionamento", score: 4.1 },
+      { nome: "Avaliações", score: 4.2 },
+    ],
   },
   {
     id: "T003",
@@ -98,18 +119,17 @@ const DADOS_TABELA_PROFESSORES = [
     media: 4.8,
     respostas: 28,
     comentarios: 8,
+    notasPorPergunta: [
+      { nome: "Didática", score: 5.0 },
+      { nome: "Clareza", score: 4.8 },
+      { nome: "Material", score: 4.7 },
+      { nome: "Pontualidade", score: 4.9 },
+      { nome: "Relacionamento", score: 5.0 },
+      { nome: "Avaliações", score: 4.5 },
+    ],
   },
 ];
-
-const DADOS_LEGENDA_ESTRELAS = [
-  { estrelas: 5, icone: <LucideLaugh color="green" size={20} /> },
-  { estrelas: 4, icone: <LucideLaugh color="#2fc12fff" size={20} /> },
-  { estrelas: 3, icone: <LucideLaugh color="gold" size={20} /> },
-  { estrelas: 2, icone: <LucideLaugh color="orange" size={20} /> },
-  { estrelas: 1, icone: <LucideLaugh color="red" size={20} /> },
-];
-
-const DADOS_ULTIMOS_COMENTARIOS = [
+const DADOS_TODOS_COMENTARIOS = [
   {
     id: "C01",
     professor: "Prof. Ana Silva",
@@ -128,176 +148,105 @@ const DADOS_ULTIMOS_COMENTARIOS = [
     pergunta: "Avaliações",
     comentario: "As provas são muito difíceis e não condizem com a aula.",
   },
+  {
+    id: "C04",
+    professor: "Prof. Ana Silva",
+    pergunta: "Relacionamento",
+    comentario: "Muito atenciosa, sempre disposta a ajudar depois da aula.",
+  },
+  {
+    id: "C05",
+    professor: "Prof. Bruno Costa",
+    pergunta: "Material",
+    comentario: "Os slides são confusos.",
+  },
 ];
-
 const urlLogoEscola = "https://imgur.com/9FAmRRW.png";
 // --- FIM DOS DADOS MOCKADOS ---
 
-/**
- * Lógica de Front-end: Define a cor da barra do gráfico com base na nota.
- * @param {number} score - A nota (de 0 a 5).
- * @returns {string} - Código hexadecimal da cor.
- */
-const definirCorDaNota = (score) => {
-  if (score < 3) return "#ef4444"; // Vermelho
-  if (score < 4) return "#eab308"; // Amarelo
-  return "#22c55e"; // Verde
-};
-
-// --- Subcomponentes (Componentes menores usados apenas nesta tela) ---
-
-/**
- * Card de estatística (Média Geral, Total de Respostas).
- */
-const CardEstatistica = ({ titulo, label, subtitulo, cor, icone }) => (
-  <div className="card-estatistica" style={{ backgroundColor: cor }}>
-    <div className="card-estatistica-topo">
-      <div className="card-estatistica-titulo-grupo">
-        <span className="card-estatistica-titulo">{titulo}</span>
-        <span className="card-estatistica-label">{label}</span>
-      </div>
-      <div className="card-estatistica-icone">{icone}</div>
-    </div>
-    <span className="card-estatistica-subtitulo">{subtitulo}</span>
-  </div>
-);
-
-/**
- * Dropdown de filtro (Escola, Ano Letivo, Turma).
- */
-const DropdownFiltro = ({ icone, label, value }) => (
-  <div className="dropdown-filtro">
-    <label>{label}</label>
-    <div className="dropdown-filtro-caixa">
-      <div className="dropdown-filtro-conteudo">
-        {icone}
-        <span>{value}</span>
-      </div>
-      <ChevronDown size={16} style={{ color: "#9ca3af" }} />
-    </div>
-  </div>
-);
-
-/**
- * Ícone de estrela simples para as tabelas.
- */
-const IconeEstrela = ({ fill = false }) => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill={fill ? "#f97316" : "none"}
-    stroke={fill ? "#f97316" : "#f97316"}
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    style={{ display: "inline-block", verticalAlign: "middle" }}
-  >
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-  </svg>
-);
-
-/**
- * Tabela principal com o desempenho dos professores.
- */
-const TabelaProfessores = () => (
-  <div className="container-tabela">
-    <table className="tabela-relatorio">
-      <thead>
-        <tr>
-          <th>Professor</th>
-          <th>Disciplina</th>
-          <th>Média Geral</th>
-          <th>Nº de Respostas</th>
-          <th>Nº de Comentários</th>
-        </tr>
-      </thead>
-      <tbody>
-        {DADOS_TABELA_PROFESSORES.map((professor) => (
-          <tr key={professor.id}>
-            <td className="td-destaque-nome">{professor.nome}</td>
-            <td>{professor.disciplina}</td>
-            <td className="td-destaque-final">
-              {professor.media.toFixed(1)} <IconeEstrela fill={true} />
-            </td>
-            <td>{professor.respostas}</td>
-            <td>{professor.comentarios}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
-
-/**
- * Tabela lateral com a legenda das estrelas.
- */
-const TabelaLegenda = () => (
-  <div className="container-tabela">
-    <table className="tabela-relatorio">
-      <thead>
-        <tr>
-          <th>Estrelas</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        {DADOS_LEGENDA_ESTRELAS.map((item) => (
-          <tr key={item.estrelas}>
-            <td className="td-destaque-nome">
-              {item.estrelas} <IconeEstrela fill={true} />
-            </td>
-            <td>{item.icone}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
-
-/**
- * Lista lateral com os últimos comentários.
- */
-const ListaComentarios = () => (
-  <div className="container-lista-comentarios">
-    {DADOS_ULTIMOS_COMENTARIOS.map((item) => (
-      <div key={item.id} className="bloco-comentario">
-        <div className="comentario-cabecalho">
-          <span className="comentario-professor">{item.professor}</span>
-          <span className="comentario-pergunta">({item.pergunta})</span>
-        </div>
-        <p className="comentario-texto">"{item.comentario}"</p>
-      </div>
-    ))}
-  </div>
-);
 
 // --- Componente Principal (Tela de Relatório) ---
 
-/**
- * Renderiza a página completa do relatório da direção.
- * @param {object} props - Propriedades do React.
- * @param {function} props.aoSair - Função de callback para executar o logout.
- */
-export default function TelaRelatorio({ aoSair }) {
-  /**
-   * Estado para controlar quais gráficos estão recolhidos (true) ou expandidos (false).
-   */
+// MUDANÇA: Recebe 'aoVoltar' (do ScreenMenu) em vez de 'aoSair' (do App.js)
+export default function TelaRelatorio({ aoVoltar }) {
+  // --- Estados para os Filtros ---
+  const [filtroAno, setFiltroAno] = useState("2025");
+  const [filtroTurma, setFiltroTurma] = useState("3º Ano A");
+  const [filtroProfessor, setFiltroProfessor] = useState("Todos");
+  const [termoBusca, setTermoBusca] = useState("");
+
+  // --- Estado para o Modal ---
+  const [professorSelecionado, setProfessorSelecionado] = useState(null);
+
+  // --- Estado dos Gráficos (Colapso) ---
   const [graficosRecolhidos, setGraficosRecolhidos] = useState({
     destaques: false,
     pontuacao: false,
   });
 
-  /**
-   * Alterna o estado (recolhido/expandido) de um gráfico específico.
-   * @param {string} idGrafico - O ID do gráfico ('destaques' or 'pontuacao').
-   */
   const alternarRecolher = (idGrafico) => {
     setGraficosRecolhidos((estadoAnterior) => ({
       ...estadoAnterior,
       [idGrafico]: !estadoAnterior[idGrafico],
     }));
   };
+
+  /**
+   * Lógica de Front-end: Filtra os professores baseado nos estados.
+   */
+  const professoresFiltrados = useMemo(() => {
+    let dados = DADOS_TABELA_PROFESSORES;
+
+    if (filtroProfessor !== "Todos") {
+      dados = dados.filter((p) => p.nome === filtroProfessor);
+    }
+    if (termoBusca.trim() !== "") {
+      dados = dados.filter((p) =>
+        p.nome.toLowerCase().includes(termoBusca.toLowerCase())
+      );
+    }
+    return dados;
+  }, [termoBusca, filtroProfessor]);
+
+  /**
+   * Lógica de Front-end: Filtra os comentários para o professor no modal.
+   */
+  const comentariosDoProfessor = useMemo(() => {
+    if (!professorSelecionado) return [];
+    return DADOS_TODOS_COMENTARIOS.filter(
+      (c) => c.professor === professorSelecionado.nome
+    );
+  }, [professorSelecionado]);
+
+  // Funções do Modal
+  const abrirModal = (professor) => setProfessorSelecionado(professor);
+  const fecharModal = () => setProfessorSelecionado(null);
+
+  /**
+   * Lógica para definir as classes do grid de gráficos (Expansão Horizontal)
+   */
+  const definirClassesDeGrid = () => {
+    const { destaques, pontuacao } = graficosRecolhidos;
+    let classes = "grid-graficos ";
+
+    if (destaques && !pontuacao) {
+      classes += "grid-recolhido-destaques";
+    } else if (!destaques && pontuacao) {
+      classes += "grid-recolhido-pontuacao";
+    }
+    
+    return classes;
+  };
+
+  // --- Opções dos Filtros (para os dropdowns reais) ---
+  const opcoesAno = ["2025", "2024", "2023"];
+  const opcoesTurma = ["3º Ano A", "3º Ano B", "2º Ano A"];
+  const opcoesProfessor = [
+    "Todos",
+    "Prof. Ana Silva",
+    "Prof. Bruno Costa",
+    "Prof. Carla Dias",
+  ];
 
   return (
     <>
@@ -312,60 +261,67 @@ export default function TelaRelatorio({ aoSair }) {
             />
             <h1 className="nome-escola">Escola Estadual Padre João Tomes</h1>
           </div>
-          <button onClick={aoSair} className="botao-sair">
-            Sair
-            <LogOut size={18} style={{ marginLeft: "8px" }} />
+          {/* MUDANÇA: O botão agora é "Voltar" e usa a prop 'aoVoltar' */}
+          <button onClick={aoVoltar} className="botao-sair">
+            Voltar
+            <ArrowLeft size={18} style={{ marginLeft: "8px" }} />
           </button>
         </div>
       </header>
 
       {/* Container principal da tela (com padding para o cabeçalho) */}
       <div className="tela-relatorio-wrapper">
-        {/* Conteúdo centralizado */}
         <main className="conteudo-principal largura-maxima">
-          {/* Título principal com gradiente */}
+          
           <h1 className="titulo-gradiente" style={{ textAlign: "left" }}>
             Relatório de Feedback Discente
           </h1>
 
-          {/* Grid com os cards de estatística (Média, Respostas, etc.) */}
           <div className="grid-estatisticas">
             {DADOS_CARDS_SUPERIORES.map((stat) => (
               <CardEstatistica key={stat.label} {...stat} />
             ))}
           </div>
 
-          {/* Card com os filtros */}
+          {/* Card com os filtros (AGORA FUNCIONAIS) */}
           <div className="card-geral card-filtros">
             <div className="grid-filtros">
               <DropdownFiltro
                 icone={<Building size={16} />}
                 label="Escola"
                 value="E.E. Padre João Tomes"
+                aoMudar={() => {}}
+                opcoes={["E.E. Padre João Tomes"]}
               />
               <DropdownFiltro
                 icone={<Calendar size={16} />}
                 label="Ano Letivo"
-                value="2025"
+                valor={filtroAno}
+                aoMudar={(e) => setFiltroAno(e.target.value)}
+                opcoes={opcoesAno}
               />
               <DropdownFiltro
                 icone={<GraduationCap size={16} />}
                 label="Turma"
-                value="3º Ano A"
+                valor={filtroTurma}
+                aoMudar={(e) => setFiltroTurma(e.target.value)}
+                opcoes={opcoesTurma}
               />
               <DropdownFiltro
                 icone={<Users size={16} />}
                 label="Professor"
-                value="Todos"
+                valor={filtroProfessor}
+                aoMudar={(e) => setFiltroProfessor(e.target.value)}
+                opcoes={opcoesProfessor}
               />
             </div>
           </div>
 
           {/* --- Seção de Gráficos --- */}
-          <div className="grid-graficos">
+          <div className={definirClassesDeGrid()}>
             
             {/* Card: Destaques dos Professores (Recolhível) */}
-            <div className="card-geral">
+            <div className="card-geral col-destaques">
               <div
                 className="cabecalho-card-recolhivel"
                 onClick={() => alternarRecolher("destaques")}
@@ -421,7 +377,7 @@ export default function TelaRelatorio({ aoSair }) {
             </div>
 
             {/* Card: Pontuação Média por Pergunta (Recolhível) */}
-            <div className="card-geral col-span-2">
+            <div className="card-geral col-pontuacao">
               <div
                 className="cabecalho-card-recolhivel"
                 onClick={() => alternarRecolher("pontuacao")}
@@ -470,22 +426,27 @@ export default function TelaRelatorio({ aoSair }) {
 
           {/* --- Seção de Tabelas --- */}
           <div className="grid-tabelas">
-            
-            {/* Card: Tabela de Professores */}
             <div className="card-geral col-span-2">
               <div className="cabecalho-tabela">
                 <h2 className="titulo-card" style={{ marginBottom: 0 }}>
                   Desempenho por Professor
                 </h2>
                 <div className="barra-busca">
-                  <input type="text" placeholder="Buscar professor..." />
+                  <input
+                    type="text"
+                    placeholder="Buscar professor..."
+                    value={termoBusca}
+                    onChange={(e) => setTermoBusca(e.target.value)}
+                  />
                   <Search size={16} />
                 </div>
               </div>
-              <TabelaProfessores />
+              <TabelaProfessores
+                professores={professoresFiltrados}
+                aoSelecionar={abrirModal}
+              />
             </div>
 
-            {/* Container para tabelas menores */}
             <div className="container-tabelas-menores">
               <div className="card-geral">
                 <h2 className="titulo-card">Legenda das Estrelas</h2>
@@ -493,12 +454,23 @@ export default function TelaRelatorio({ aoSair }) {
               </div>
               <div className="card-geral">
                 <h2 className="titulo-card">Últimos Comentários</h2>
-                <ListaComentarios />
+                <ListaComentarios
+                  comentarios={DADOS_TODOS_COMENTARIOS.slice(0, 3)}
+                />
               </div>
             </div>
           </div>
         </main>
       </div>
+      
+      {/* --- Renderização Condicional do Modal --- */}
+      {professorSelecionado && (
+        <ModalDetalhesProfessor
+          professor={professorSelecionado}
+          comentarios={comentariosDoProfessor}
+          aoFechar={fecharModal}
+        />
+      )}
     </>
   );
 }

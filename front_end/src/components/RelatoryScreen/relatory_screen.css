@@ -6,7 +6,7 @@
   min-height: 100vh;
   background-color: #ffffff;
   font-family: 'Poppins', sans-serif;
-  padding-top: 80px; /* Espaço para o cabeçalho fixo */
+  padding-top: 80px;
 }
 
 /* --- Layout Máximo (Centraliza o conteúdo) --- */
@@ -44,14 +44,14 @@
   gap: 0.8vw;
 }
 .logo-escola {
-  height: 50px;
+  height: 55px;
   width: auto;
   object-fit: contain;
 }
 .nome-escola {
-  font-size: clamp(1rem, 1.1vw, 1.3rem);
+  font-size: clamp(1.5rem, 1.5vw, 1.8rem);
   font-weight: 600;
-  background: linear-gradient(45deg, #0b74cf, #887dec);
+  background: linear-gradient(45deg, #2380d2, #544d95);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -68,22 +68,24 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   letter-spacing: 0.5px;
-  background: linear-gradient(90deg, #0d7eb2, #4282e2);
+  background: linear-gradient(45deg, #0b74cfbc, #887dec);
 }
 .botao-sair:hover {
-  background: linear-gradient(60deg, #a52626, #630303);
+  background: linear-gradient(60deg, #f01313, #ff0000);
   transform: translateY(-2px);
 }
 
 /* --- Título Principal (Gradiente) --- */
 .titulo-gradiente {
-  background: linear-gradient(90deg, #519fe7, #7a8bf7);
+  background: linear-gradient(45deg, #0f74c1f7, #7d70ef);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   font-size: clamp(2.5rem, 3.5vw, 4rem);
   font-weight: 800;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(3px 4px 1px rgba(0, 0, 0, 0.10));
+
 }
 
 /* --- Corpo Principal --- */
@@ -143,11 +145,13 @@
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   margin-bottom: 1.5rem;
+  transition: opacity 0.3s ease-out, margin-bottom 0.3s ease-out, padding 0.3s ease-out;
+  opacity: 1;
+  overflow: hidden; 
 }
 .titulo-card {
   font-size: 1.25rem;
   font-weight: 600;
-  /* A margem inferior é controlada pelo 'cabecalho-card-recolhivel' */
   color: #374151;
 }
 
@@ -157,17 +161,17 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 1rem; /* Espaçamento padrão do título */
+  margin-bottom: 1rem;
 }
 .cabecalho-card-recolhivel .titulo-card {
-  margin-bottom: 0; /* Remove a margem do título */
+  margin-bottom: 0;
 }
 .icone-recolher {
   color: #6b7280;
   transition: transform 0.3s ease-in-out;
 }
 .icone-recolher.recolhido {
-  transform: rotate(-180deg); /* Gira para cima */
+  transform: rotate(-180deg);
 }
 
 /* --- Seção de Filtros --- */
@@ -203,6 +207,7 @@
   border-radius: 0.5rem;
   border: 1px solid #e2e8f0;
   transition: all 0.2s ease-in-out;
+  position: relative;
 }
 .dropdown-filtro-caixa:focus-within {
   border-color: #4299e1;
@@ -213,33 +218,49 @@
   align-items: center;
   gap: 0.5rem;
   color: #374151;
-}
-.dropdown-filtro-conteudo span {
-  font-size: 0.875rem;
-  font-weight: 500;
+  width: 100%;
 }
 .dropdown-filtro-conteudo svg {
   color: #3b82f6;
+  flex-shrink: 0;
 }
+.dropdown-filtro-select {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  font-family: 'Poppins', sans-serif;
+}
+.dropdown-filtro-select::-ms-expand {
+  display: none;
+}
+
 
 /* --- Grids (Gráficos e Tabelas) --- */
 .grid-graficos {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-bottom: 3rem; /* Espaço entre seções */
+  margin-bottom: 3rem;
 }
 .grid-tabelas {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-bottom: 3rem; /* Espaço no final da página */
+  margin-bottom: 3rem;
 }
 
 /* --- Container do Gráfico (Controla altura e animação) --- */
 .container-grafico {
   width: 100%;
-  height: 45rem; /* Altura que você definiu */
+  height: 45rem; /* Altura padrão */
   overflow: hidden;
   transition: height 0.4s ease-out, opacity 0.2s 0.1s ease-out, margin-top 0.4s ease-out;
   opacity: 1;
@@ -248,7 +269,7 @@
 .container-grafico.recolhido {
   height: 0;
   opacity: 0;
-  margin-top: -1rem; /* Compensa o padding do card */
+  margin-top: -1rem;
   transition: height 0.4s ease-out, opacity 0.1s ease-out, margin-top 0.4s ease-out;
 }
 
@@ -297,8 +318,9 @@
 .tabela-relatorio tbody tr:last-child td {
   border-bottom: none;
 }
-.tabela-relatorio tr:hover {
-  background-color: #f9fafb;
+.tabela-relatorio tbody .tr-clicavel:hover {
+  background-color: #f3f4f6;
+  cursor: pointer;
 }
 
 /* --- Barra de Busca --- */
@@ -378,6 +400,124 @@
   color: #374151;
   font-style: italic;
 }
+.comentario-vazio {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* --- (NOVO) Estilos do Modal --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+.modal-conteudo {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  max-height: 95vh; /* Aumentado */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomIn 0.3s ease-out;
+}
+.modal-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.modal-titulo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+.modal-subtitulo {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+.modal-botao-fechar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 0;
+  line-height: 0;
+}
+.modal-botao-fechar:hover {
+  color: #ef4444;
+}
+.modal-corpo {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+.titulo-secao-modal {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+.modal-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1;
+}
+.stat-item strong {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+.stat-item span {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+/* MUDANÇA: Container do gráfico DENTRO do modal */
+.modal-grafico-container {
+  width: 100%;
+  height: 250px; /* Altura fixa para o gráfico do modal */
+  margin-bottom: 1.5rem;
+}
+.modal-lista-comentarios {
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 
 /* --- Responsividade (Grid) --- */
 @media (min-width: 1024px) {
@@ -387,13 +527,44 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
-  .grid-graficos .col-span-2,
+  
+  /* --- Lógica de Grid Dinâmico --- */
+  
+  /* Padrão (Ambos abertos) */
+  .grid-graficos .col-destaques {
+    grid-column: span 1 / span 1;
+    transition: grid-column 0.4s ease-out;
+  }
+  .grid-graficos .col-pontuacao {
+    grid-column: span 2 / span 2;
+    transition: grid-column 0.4s ease-out;
+  }
+
+  /* Se destaques (1) estiver recolhido, pontuacao (2) vira 3 */
+  .grid-graficos.grid-recolhido-destaques .col-pontuacao {
+    grid-column: span 3 / span 3;
+  }
+  
+  /* Se pontuacao (2) estiver recolhido, destaques (1) vira 3 */
+  .grid-graficos.grid-recolhido-pontuacao .col-destaques {
+    grid-column: span 3 / span 3;
+  }
+  
+  /* MUDANÇA: As regras que escondiam o .card-geral (como 
+    .grid-graficos.grid-recolhido-destaques .card-geral.col-destaques)
+    foram REMOVIDAS.
+    
+    Agora o card PAI (card-geral) fica sempre visível.
+    Apenas o 'container-grafico' (o miolo) encolhe verticalmente.
+  */
+
   .grid-tabelas .col-span-2 {
     grid-column: span 2 / span 2;
   }
+  
   .grid-graficos .card-geral,
   .grid-tabelas .card-geral {
-    margin-bottom: 0;
+    margin-bottom: 0; /* Remove a margem no grid desktop */
   }
 }
 
@@ -410,9 +581,12 @@
     margin-left: 0 !important;
   }
   .botao-sair {
-    font-size: 0; /* Esconde o texto "Sair" */
+    font-size: 0;
   }
   .titulo-gradiente {
     font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+  .modal-conteudo {
+    max-width: 95vw; 
   }
 }

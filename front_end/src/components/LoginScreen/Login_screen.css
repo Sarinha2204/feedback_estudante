@@ -30,16 +30,16 @@ body {
 
 /* Seção do formulário (esquerda) */
 .secao-formulario {
-    width: 55%;
+    width: 50%;
     /* * * MUDANÇA: 'flex-basis' ajustado para 55% para bater com o 'width' */
-    flex-basis: 55%;
+    flex-basis: 53%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     /* * * MUDANÇA: Padding agora usa 'vw' para escalar com a tela */
     padding: 2.5vw;
-    position: relative;
+    position: absolute;
     z-index: 2;
     background-color: transparent;
     min-height: 100vh;

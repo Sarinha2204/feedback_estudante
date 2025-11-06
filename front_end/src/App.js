@@ -1,51 +1,58 @@
 import React, { useState } from 'react';
 
-// --- CORREÇÃO FINAL ---
-// Agora os imports estão corretos,
-// presumindo que 'components' e 'RelatoryScreen'
-// estão DENTRO de 'src', junto com App.js
+// 1. Importa seus componentes de tela
+// (Agora que os arquivos estão certos, isso vai funcionar)
 import LoginScreen from './components/LoginScreen/Login_screen.js';
 import ScreenMenu from './components/ScreenMenu/Screen_menu.js';
-import RelatoryScreen from './components/RelatoryScreen/relatory_screen.jsx'; 
+
+// (O App.js NÃO precisa saber do TelaRelatorio, 
+// o ScreenMenu cuida disso, como a gente já fez)
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState("login");
+  
+  // COMEÇA COM "login"
+  const [telaAtual, setTelaAtual] = useState("login");
 
+  /**
+   * O LoginScreen (agora o LoginScreen de verdade) chama esta função.
+   */
   const handleLoginAttempt = (codigo, senha) => {
-    if (codigo === "DIRETOR" && senha === "direcao123") {
-      setCurrentScreen("director_report");
-    } 
-    else if (codigo && senha) {
-      setCurrentScreen("student_menu");
+    
+    // LÓGICA DE LOGIN (Exemplo)
+    if (codigo && senha) {
+      // Se o login for válido, MUDA pra "menu"
+      setTelaAtual("menu");
     } 
     else {
       alert("Código ou senha inválidos!");
     }
   };
 
+  /**
+   * O ScreenMenu (agora o ScreenMenu de verdade) chama esta função.
+   */
   const handleLogout = () => {
-    setCurrentScreen("login");
+    // Quando desloga, MUDA DE VOLTA pra "login"
+    setTelaAtual("login");
   };
 
-  const renderScreen = () => {
-    switch (currentScreen) {
-      case "login":
-        return <LoginScreen onLoginAttempt={handleLoginAttempt} />;
-      
-      case "student_menu":
-        return <ScreenMenu onLogout={handleLogout} />;
-      
-      case "director_report":
-        return <RelatoryScreen onLogout={handleLogout} />; 
-      
-      default:
-        return <LoginScreen onLoginAttempt={handleLoginAttempt} />;
-    }
-  };
+  // --- Renderização Principal ---
+  
+  // Se 'telaAtual' for 'login', mostra o LoginScreen
+  if (telaAtual === "login") {
+    return (
+      <LoginScreen 
+        onLoginAttempt={handleLoginAttempt} 
+      />
+    );
+  }
 
-  return (
-    <div className="App">
-      {renderScreen()}
-    </div>
-  );
+  // Se 'telaAtual' for 'menu', mostra o ScreenMenu
+  if (telaAtual === "menu") {
+    return (
+      <ScreenMenu 
+        onLogout={handleLogout} 
+      />
+    );
+  }
 }
