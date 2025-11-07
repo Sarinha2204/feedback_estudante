@@ -1,0 +1,526 @@
+/* Importação da fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Reset de estilos para consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo base do corpo da página */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    /* Adiciona anti-aliasing para fontes ficarem mais suaves */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Layout Principal --- */
+
+/* Contêiner principal da tela */
+.tela-login {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Seção do formulário (esquerda) */
+.secao-formulario {
+    width: 50%;
+    /* * * MUDANÇA: 'flex-basis' ajustado para 55% para bater com o 'width' */
+    flex-basis: 53%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* * * MUDANÇA: Padding agora usa 'vw' para escalar com a tela */
+    padding: 2.5vw;
+    position: absolute;
+    z-index: 2;
+    background-color: transparent;
+    min-height: 100vh;
+}
+
+/* Seção da imagem de destaque (direita) */
+.secao-imagem {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 1;
+    /* Largura mantida como você definiu */
+    width: 78%;
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* --- Cabeçalho --- */
+
+.cabecalho {
+    position: absolute;
+    /* * * MUDANÇA: Posição usa 'vh' e 'vw' para escalar */
+    top: 2vh;
+    left: 2.5vw;
+    display: flex;
+    align-items: center;
+    /* * * MUDANÇA: Gap usa 'vw' para escalar */
+    gap: 0.8vw;
+    z-index: 3;
+}
+
+.logo-escola {
+    /* * * MUDANÇA: Altura usa 'vh' (altura da tela) */
+    height: 6vh;
+    width: auto;
+    object-fit: contain;
+}
+
+.nome-escola {
+    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
+    font-size: clamp(1rem, 1.1vw, 1.3rem);
+    font-weight: 600;
+    background: linear-gradient(45deg, #0b74cf, #9090ec);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* --- Componentes do Formulário --- */
+
+/* Card principal do formulário */
+.card-formulario {
+    width: 100%;
+    /* * * MUDANÇA: max-width trocado de px para rem (melhor para acessibilidade) */
+    max-width: 55rem;
+    /* (Equivalente a 480px, um pouco mais flexível) */
+    /* * * MUDANÇA: margin-top usa 'vh' */
+    margin-top: 5vh;
+    /* * * MUDANÇA: Padding usa 'vw' */
+    padding: 2.5vw;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.titulo-principal {
+    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
+    font-size: clamp(2.5rem, 3.5vw, 4rem);
+    font-weight: 800;
+    /* * * MUDANÇA: margin-bottom usa 'vh' */
+    margin-bottom: 4vh;
+    text-align: center;
+}
+
+.titulo-gradiente {
+    background: linear-gradient(10deg, #0b74cf, #7678f2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.grupo-input {
+    /* * * MUDANÇA: margin-bottom usa 'vh' */
+    margin-bottom: 2vh;
+}
+
+.grupo-input label {
+    display: block;
+    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
+    font-size: clamp(0.85rem, 0.9vw, 1rem);
+    font-weight: 500;
+    color: #374151;
+    /* * * MUDANÇA: margin-bottom usa 'vh' */
+    margin-bottom: 1vh;
+}
+
+.grupo-input input {
+    width: 100%;
+    /* * * MUDANÇA: Padding usa 'vh' e 'vw' */
+    padding: 1.8vh 1.2vw;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    color: #1a202c;
+    transition: all 0.2s ease-in-out;
+}
+
+.grupo-input input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+
+.botao-acessar {
+    width: 100%;
+    /* * * MUDANÇA: Padding usa 'vh' e 'vw' */
+    padding: 2vh 1.2vw;
+    border: none;
+    border-radius: 0.5rem;
+    color: rgb(228, 228, 228);
+    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, #0d7eb2, #7a8bf7);
+}
+
+.botao-acessar:hover {
+    background: linear-gradient(90deg, #505fa0, #12648d);
+    transform: translateY(-2px);
+}
+
+.rodape-card {
+    /* * * MUDANÇA: margin-top usa 'vh' */
+    margin-top: 2vh;
+    text-align: center;
+    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
+    font-size: clamp(0.8rem, 0.85vw, 0.9rem);
+    color: #718096;
+    line-height: 1.5;
+}
+
+/* --- Elementos Decorativos e Animações --- */
+
+/* * * MUDANÇA: Removido 'width: 100px;' que estava em conflito com 'vw' */
+.estrela-flutuante,
+.estrela-flutuante2,
+.estrela-flutuante3,
+.estrela-flutuante4,
+.estrela-flutuante5,
+.estrela-flutuante6,
+.estrela-flutuante7,
+.estrela-flutuante8 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    animation: brilhar 4s infinite ease-in-out;
+}
+
+/* Posições específicas dos elementos (AGORA COM VW/VH) */
+.estrela-flutuante {
+    top: 25.9vh;
+    right: 13.5vw;
+    width: 4vw;
+}
+
+.estrela-flutuante2 {
+    bottom: 6vh;
+    right: 30.9vw;
+    width: 5vw;
+}
+
+.estrela-flutuante3 {
+    top: 91vh;
+    right: 0.5vw;
+    width: 6.5vw;
+}
+
+
+/* ALTERAR IMAGEM */
+.estrela-flutuante4 {
+    top: 10vh;
+    right: 18.7vw;
+    width: 4.6vw;
+}
+
+.estrela-flutuante5 {
+    bottom: 0vh;
+    right: 44.3vw;
+    width: 3.9vw;
+}
+
+.estrela-flutuante6 {
+    bottom: 25vh;
+    right: 3.4vw;
+    width: 2.6vw;
+}
+
+.estrela-flutuante7 {
+    bottom: 17vh;
+    right: 10vw;
+    width: 4.6vw;
+}
+
+.estrela-flutuante8 {
+    bottom: 50vh;
+    right: 3.99vw;
+    width: 4.6vw;
+}
+
+/* === ESTRELAS 9 E 10 COM NOVA ANIMAÇÃO === */
+.estrela-flutuante9 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 30vh;
+    right: 9vw;
+    width: 2.5vw;
+    animation: piscar 3.5s infinite ease-in-out 0.5s;
+}
+
+.estrela-flutuante10 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 14vh;
+    right: 10.2vw;
+    width: 2.5vw;
+    animation: piscar 3s infinite ease-in-out 1.2s;
+}
+
+.estrela-flutuante11 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 55vh;
+    right: 11.3vw;
+    width: 2.5vw;
+    animation: piscar 3.2s infinite ease-in-out 0.9s;
+}
+
+.estrela-flutuante12 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 8vh;
+    right: 28vw;
+    width: 2.5vw;
+    animation: piscar 3s infinite ease-in-out 1.2s;
+}
+
+.estrela-flutuante13 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    /* * * MUDANÇA: Corrigido typo 'button:' para 'bottom:' */
+    bottom: 61vh;
+    right: 3.3vw;
+    width: 2.5vw;
+    animation: piscar 3.9s infinite ease-in-out 1.7s;
+}
+
+.estrela-flutuante14 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 62vh;
+    right: 9vw;
+    width: 4vw;
+    animation: brilhar 6s infinite ease-out;
+}
+
+.estrela-flutuante15 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 30vh;
+    right: 34vw;
+    width: 3vw;
+    animation: brilhar 4s infinite ease-out;
+}
+
+.estrela-flutuante16 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 29.8vh;
+    right: 33.5vw;
+    width: 1.5vw;
+    animation: piscar 3.9s infinite ease-in-out 1.7s;
+}
+
+.estrela-flutuante17 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 76.8vh;
+    right: 9.5vw;
+    width: 3.5vw;
+    animation: piscar 3.9s infinite ease-in-out 1.7s;
+}
+
+.estrela-flutuante18 {
+    position: fixed;
+    z-index: 10;
+    height: auto;
+    bottom: 80.8vh;
+    right: 11.5vw;
+    width: 2.5vw;
+    animation: piscar 6s infinite ease-in-out 3.7s;
+}
+
+@keyframes brilhar {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.1) rotate(4deg);
+        opacity: 1;
+    }
+}
+
+/* === NOVA ANIMAÇÃO PISCAR === */
+@keyframes piscar {
+
+    0%,
+    100% {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+}
+
+/* --- Design Responsivo --- */
+
+/* As media queries estão corretas. Elas definem os *pontos de quebra* * onde o layout muda drasticamente (ex: de 2 colunas para 1).
+ * As mudanças que fiz *dentro* das classes (com 'vw', 'vh', 'clamp')
+ * cuidam da fluidez *entre* esses pontos de quebra.
+ */
+@media (max-width: 1175px) {
+    .tela-login {
+        display: block;
+    }
+
+    /* Aqui a .secao-formulario volta a ter 100% de largura,
+     * o que sobrescreve o 'width: 55%' e 'flex-basis: 55%' (correto). */
+    .secao-formulario {
+        position: relative;
+        width: 100%;
+        flex-basis: auto;
+        /* Garante a quebra do flex */
+        min-height: 100vh;
+        Z-index: 2;
+        background: transparent;
+        padding: 2.5rem;
+        /* Volta para 'rem' no mobile, o que é bom */
+    }
+
+    .secao-imagem {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0.15;
+        background-position: center;
+        background-attachment: scroll;
+    }
+
+    .cabecalho {
+        position: static;
+        justify-content: center;
+        margin-bottom: 2rem;
+        /* Volta para 'rem'/'px' no mobile, o que é mais previsível */
+        gap: 0.8rem;
+    }
+
+    .logo-escola {
+        height: 3.5rem;
+    }
+
+    .nome-escola {
+        font-size: 1.1rem;
+        /* Volta pra 'rem' */
+    }
+
+    .card-formulario {
+        width: 90%;
+        max-width: 460px;
+        /* max-width em px é bom aqui */
+        margin-top: 2rem;
+        /* Volta pra 'rem' */
+        padding: 2.5rem;
+    }
+
+    .titulo-principal {
+        font-size: 3rem;
+        /* Fontes voltam para 'rem' */
+        margin-bottom: 2.5rem;
+    }
+
+    .grupo-input {
+        margin-bottom: 1.5rem;
+    }
+
+    .grupo-input label {
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .grupo-input input {
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+    }
+
+    .botao-acessar {
+        padding: 1.1rem;
+        font-size: 1.1rem;
+    }
+
+    .rodape-card {
+        margin-top: 2.5rem;
+        font-size: 0.875rem;
+    }
+
+
+    /* Esconde as estrelas (agora 'fixed') em telas menores */
+    .estrela-flutuante,
+    .estrela-flutuante2,
+    .estrela-flutuante3,
+    .estrela-flutuante4,
+    .estrela-flutuante5,
+    .estrela-flutuante6,
+    .estrela-flutuante7,
+    .estrela-flutuante8,
+    .estrela-flutuante9,
+    .estrela-flutuante10,
+    .estrela-flutuante11,
+    .estrela-flutuante12,
+    .estrela-flutuante13,
+    .estrela-flutuante14,
+    .estrela-flutuante15,
+    .estrela-flutuante16,
+    .sobreposicao {
+        display: none;
+    }
+}
+
+/* Estilos para celulares (até 576px) */
+@media (max-width: 576px) {
+    .card-formulario {
+        padding: 1.5rem;
+        box-shadow: none;
+    }
+
+    .titulo-principal {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .logo-escola {
+        height: 2.8rem;
+    }
+
+    .nome-escola {
+        font-size: 1rem;
+    }
+}
