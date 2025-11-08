@@ -38,6 +38,7 @@ const NavbarAdm = (props) => {
                 <nav className="menu-abas">
                     <a className={`aba-menu ${abaAtiva === 'turmas' ? 'ativa' : ''}`} onClick={() => (setAbaAtiva('turmas'), navigate('/homeadm'))}>Turmas</a>
                     <a className={`aba-menu ${abaAtiva === 'estudantes' ? 'ativa' : ''}`} onClick={() => (setAbaAtiva('estudantes'), navigate('/estudantesadm'))}>Estudantes</a>
+                    <a className={`aba-menu ${abaAtiva === 'professores' ? 'ativa' : ''}`} onClick={() => (setAbaAtiva('professores'), navigate('/professoresadm'))}>Professores</a>
                     <a className={`aba-menu ${abaAtiva === 'configuracoes' ? 'ativa' : ''}`} onClick={() => (setAbaAtiva('configuracoes'), navigate('/configuracoesadm'))}>Configurações</a>
                 </nav>
               

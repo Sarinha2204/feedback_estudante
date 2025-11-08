@@ -14,6 +14,7 @@ import Avaliacao from './pages/Avaliacao/Avaliacao';
 import LoginAdm from './pagesadm/Loginadm/Loginadm';
 import HomeAdm from './pagesadm/Homeadm/Homeadm';
 import Estudantesadm from './pagesadm/Estudantesadm/Estudantesadm';
+import Professoresadm from './pagesadm/Professoresadm/Professoresadm';
 import Configuracoesadm from './pagesadm/Configuracaoadm/Configuracaoadm';
 
 
@@ -71,6 +72,15 @@ function AppRoutes() {
           element={
             <ProtectedRoute>
               <Configuracoesadm />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/professoresadm"
+          element={
+            <ProtectedRoute>
+              <Professoresadm />
             </ProtectedRoute>
           }
         />

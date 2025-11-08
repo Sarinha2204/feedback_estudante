@@ -5,6 +5,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [usuario, setUsuario] = useState(null);
+  const [config, setConfig] = useState({});
   
   const login = (dadosUsuario) => {
     setUsuario(dadosUsuario);
@@ -16,14 +17,20 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("usuario");
   };
 
+  const setconfig = (value) => {
+    setconfig(value);
+  };
+
   useEffect(() => {
     const usuarioSalvo = localStorage.getItem("usuario");
     if (usuarioSalvo) setUsuario(JSON.parse(usuarioSalvo));
   }, []);
 
   
+
+  
   return (
-    <AuthContext.Provider value={{ usuario, login, logout}}>
+    <AuthContext.Provider value={{ usuario, login, logout, config, setconfig}}>
       {children}
     </AuthContext.Provider>
   );
