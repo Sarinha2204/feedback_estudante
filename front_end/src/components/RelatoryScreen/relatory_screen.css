@@ -1,0 +1,592 @@
+/* --- Importação da Fonte --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* --- Container Principal --- */
+.tela-relatorio-wrapper {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 80px;
+}
+
+/* --- Layout Máximo (Centraliza o conteúdo) --- */
+.largura-maxima {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Cabeçalho Fixo (Estilo do Login) --- */
+.cabecalho-fixo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 50;
+  padding: 0 2.5vw;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+.cabecalho-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.container-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
+}
+.logo-escola {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+}
+.nome-escola {
+  font-size: clamp(1.5rem, 1.5vw, 1.8rem);
+  font-weight: 600;
+  background: linear-gradient(45deg, #2380d2, #544d95);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.botao-sair {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(228, 228, 228);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.5px;
+  background: linear-gradient(45deg, #0b74cfbc, #887dec);
+}
+.botao-sair:hover {
+  background: linear-gradient(60deg, #f01313, #ff0000);
+  transform: translateY(-2px);
+}
+
+/* --- Título Principal (Gradiente) --- */
+.titulo-gradiente {
+  background: linear-gradient(45deg, #0f74c1f7, #7d70ef);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(2.5rem, 3.5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  filter: drop-shadow(3px 4px 1px rgba(0, 0, 0, 0.10));
+
+}
+
+/* --- Corpo Principal --- */
+.conteudo-principal {
+  padding: 1.5rem;
+}
+
+/* Grid de Estatísticas (Cards coloridos) */
+.grid-estatisticas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Card de Estatística --- */
+.card-estatistica {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.card-estatistica-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.card-estatistica-titulo-grupo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+.card-estatistica-titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.card-estatistica-label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.card-estatistica-icone {
+  opacity: 0.7;
+}
+.card-estatistica-subtitulo {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+/* --- Card Genérico (Branco, com sombra) --- */
+.card-geral {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+  transition: opacity 0.3s ease-out, margin-bottom 0.3s ease-out, padding 0.3s ease-out;
+  opacity: 1;
+  overflow: hidden; 
+}
+.titulo-card {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* --- Cabeçalho de Card Recolhível --- */
+.cabecalho-card-recolhivel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.cabecalho-card-recolhivel .titulo-card {
+  margin-bottom: 0;
+}
+.icone-recolher {
+  color: #6b7280;
+  transition: transform 0.3s ease-in-out;
+}
+.icone-recolher.recolhido {
+  transform: rotate(-180deg);
+}
+
+/* --- Seção de Filtros --- */
+.card-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.grid-filtros {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.dropdown-filtro {
+  flex: 1;
+  min-width: 150px;
+}
+.dropdown-filtro label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+.dropdown-filtro-caixa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+.dropdown-filtro-caixa:focus-within {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+.dropdown-filtro-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #374151;
+  width: 100%;
+}
+.dropdown-filtro-conteudo svg {
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+.dropdown-filtro-select {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  font-family: 'Poppins', sans-serif;
+}
+.dropdown-filtro-select::-ms-expand {
+  display: none;
+}
+
+
+/* --- Grids (Gráficos e Tabelas) --- */
+.grid-graficos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.grid-tabelas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* --- Container do Gráfico (Controla altura e animação) --- */
+.container-grafico {
+  width: 100%;
+  height: 45rem; /* Altura padrão */
+  overflow: hidden;
+  transition: height 0.4s ease-out, opacity 0.2s 0.1s ease-out, margin-top 0.4s ease-out;
+  opacity: 1;
+  margin-top: 0;
+}
+.container-grafico.recolhido {
+  height: 0;
+  opacity: 0;
+  margin-top: -1rem;
+  transition: height 0.4s ease-out, opacity 0.1s ease-out, margin-top 0.4s ease-out;
+}
+
+/* --- Tabela --- */
+.container-tabela {
+  overflow-x: auto;
+}
+.tabela-relatorio {
+  min-width: 100%;
+  border-collapse: collapse;
+}
+.tabela-relatorio thead {
+  background-color: #f3f4f6;
+}
+.tabela-relatorio th,
+.tabela-relatorio td {
+  border-bottom: 1px solid #e5e7eb;
+}
+.tabela-relatorio th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.tabela-relatorio tbody {
+  background-color: #ffffff;
+}
+.tabela-relatorio td {
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  color: #374151;
+  vertical-align: middle;
+}
+.tabela-relatorio .td-destaque-nome {
+  color: #1f2937;
+  font-weight: 500;
+}
+.tabela-relatorio .td-destaque-final {
+  color: #1f2937;
+  font-weight: 700;
+}
+.tabela-relatorio tbody tr:last-child td {
+  border-bottom: none;
+}
+.tabela-relatorio tbody .tr-clicavel:hover {
+  background-color: #f3f4f6;
+  cursor: pointer;
+}
+
+/* --- Barra de Busca --- */
+.cabecalho-tabela {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+.barra-busca {
+  position: relative;
+}
+.barra-busca input {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+  color: #1a202c;
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.barra-busca input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+.barra-busca svg {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+/* --- Seção das Tabelas Menores --- */
+.container-tabelas-menores {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Lista de Comentários --- */
+.container-lista-comentarios {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bloco-comentario {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+}
+.bloco-comentario:last-child {
+  border-bottom: none;
+}
+.comentario-cabecalho {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.comentario-professor {
+  font-weight: 600;
+  color: #1f2937;
+}
+.comentario-pergunta {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+.comentario-texto {
+  font-size: 0.875rem;
+  color: #374151;
+  font-style: italic;
+}
+.comentario-vazio {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* --- (NOVO) Estilos do Modal --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+.modal-conteudo {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  max-height: 95vh; /* Aumentado */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomIn 0.3s ease-out;
+}
+.modal-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.modal-titulo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+.modal-subtitulo {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+.modal-botao-fechar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 0;
+  line-height: 0;
+}
+.modal-botao-fechar:hover {
+  color: #ef4444;
+}
+.modal-corpo {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+.titulo-secao-modal {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+.modal-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1;
+}
+.stat-item strong {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+.stat-item span {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+/* MUDANÇA: Container do gráfico DENTRO do modal */
+.modal-grafico-container {
+  width: 100%;
+  height: 250px; /* Altura fixa para o gráfico do modal */
+  margin-bottom: 1.5rem;
+}
+.modal-lista-comentarios {
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+/* --- Responsividade (Grid) --- */
+@media (min-width: 1024px) {
+  .grid-graficos,
+  .grid-tabelas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* --- Lógica de Grid Dinâmico --- */
+  
+  /* Padrão (Ambos abertos) */
+  .grid-graficos .col-destaques {
+    grid-column: span 1 / span 1;
+    transition: grid-column 0.4s ease-out;
+  }
+  .grid-graficos .col-pontuacao {
+    grid-column: span 2 / span 2;
+    transition: grid-column 0.4s ease-out;
+  }
+
+  /* Se destaques (1) estiver recolhido, pontuacao (2) vira 3 */
+  .grid-graficos.grid-recolhido-destaques .col-pontuacao {
+    grid-column: span 3 / span 3;
+  }
+  
+  /* Se pontuacao (2) estiver recolhido, destaques (1) vira 3 */
+  .grid-graficos.grid-recolhido-pontuacao .col-destaques {
+    grid-column: span 3 / span 3;
+  }
+  
+  /* MUDANÇA: As regras que escondiam o .card-geral (como 
+    .grid-graficos.grid-recolhido-destaques .card-geral.col-destaques)
+    foram REMOVIDAS.
+    
+    Agora o card PAI (card-geral) fica sempre visível.
+    Apenas o 'container-grafico' (o miolo) encolhe verticalmente.
+  */
+
+  .grid-tabelas .col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+  
+  .grid-graficos .card-geral,
+  .grid-tabelas .card-geral {
+    margin-bottom: 0; /* Remove a margem no grid desktop */
+  }
+}
+
+/* --- Responsividade (Header) --- */
+@media (max-width: 768px) {
+  .nome-escola {
+    display: none;
+  }
+  .botao-sair {
+    padding: 0.5rem;
+    border-radius: 9999px;
+  }
+  .botao-sair svg {
+    margin-left: 0 !important;
+  }
+  .botao-sair {
+    font-size: 0;
+  }
+  .titulo-gradiente {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+  .modal-conteudo {
+    max-width: 95vw; 
+  }
+}
