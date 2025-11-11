@@ -10,7 +10,6 @@ import {
   Cell,
   LabelList,
 } from "recharts";
-// MUDANÇA: O import agora "sobe um nível" (../) para achar a pasta utils
 import { definirCorDaNota } from "../relatorio_utils/logicaGraficos.js";
 
 /**

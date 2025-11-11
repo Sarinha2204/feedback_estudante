@@ -4,12 +4,13 @@ import { LucideAngry, LucideLaugh, LucideMeh, LucideSmile, LucideSmilePlus } fro
 
 // Os dados da legenda só são usados aqui
 const DADOS_LEGENDA_ESTRELAS = [
-  { estrelas: 5, icone: <LucideLaugh color="green" size={20} /> },
-  { estrelas: 4, icone: <LucideSmile color="#2fc12fff" size={20} /> },
-  { estrelas: 3, icone: <LucideSmile color="gold" size={20} /> },
-  { estrelas: 2, icone: <LucideMeh color="orange" size={20} /> },
-  { estrelas: 1, icone: <LucideMeh color="red" size={20} /> },
+  { estrelas: 5, icone: <LucideLaugh color="#264653" size={20} /> },
+  { estrelas: 4, icone: <LucideSmile color="#2A9D8F" size={20} /> },
+  { estrelas: 3, icone: <LucideSmile color="#E9C46A" size={20} /> },
+  { estrelas: 2, icone: <LucideMeh color="#f4A261" size={20} /> },
+  { estrelas: 1, icone: <LucideMeh color="#ef4444" size={20} /> },
 ];
+
 
 /**
  * Tabela lateral com a legenda das estrelas.
