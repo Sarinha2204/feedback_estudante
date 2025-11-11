@@ -103,7 +103,7 @@ body {
 .card-formulario {
     width: 100%;
     /* Garante que o card não exceda uma largura máxima em telas grandes */
-    max-width: 35rem; /* 560px */
+    max-width: 45rem; 
     margin-top: 3rem;
     padding: 2.5rem;
     background-color: #ffffff;
