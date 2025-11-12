@@ -2,10 +2,8 @@ import React from "react";
 
 /**
  * Card de estatística (Média Geral, Total de Respostas).
- * MUDANÇA: Recebe 'background' (gradiente) em vez de 'cor' (sólida).
  */
 const CardEstatistica = ({ titulo, label, subtitulo, background, icone }) => (
-  // MUDANÇA: style agora usa 'background'
   <div className="card-estatistica" style={{ background: background }}>
     <div className="card-estatistica-topo">
       <div className="card-estatistica-titulo-grupo">

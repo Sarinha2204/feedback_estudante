@@ -123,8 +123,8 @@ const DADOS_TABELA_PROFESSORES = [
       { nome: "Didática", score: 5.0 },
       { nome: "Clareza", score: 4.8 },
       { nome: "Material", score: 4.7 },
-      { nome: "Pontualidade", score: 4.9 },
-      { nome: "Relacionamento", score: 5.0 },
+      { nome: "Pontualidade", score: 2.9 },
+      { nome: "Relacionamento", score: 1.0 },
       { nome: "Avaliações", score: 4.5 },
     ],
   },
@@ -161,7 +161,7 @@ const DADOS_TODOS_COMENTARIOS = [
     comentario: "Os slides são confusos.",
   },
 ];
-const urlLogoEscola = "https://imgur.com/9FAmRRW.png";
+const urlLogoEscola = "https://imgur.com/oGUfXtc.png";
 // --- FIM DOS DADOS MOCKADOS ---
 
 
@@ -404,7 +404,7 @@ export default function TelaRelatorio({ aoVoltar }) {
                     <YAxis domain={[0, 5]} />
                     <Tooltip formatter={(value) => value.toFixed(1)} />
                     <Legend />
-                    <Bar dataKey="score" fill="#ddb503ff" name="Média de 5 ⭐">
+                    <Bar dataKey="score" fill="#457be9ff" name="Média de 5 ⭐">
                       <LabelList
                         dataKey="score"
                         position="top"

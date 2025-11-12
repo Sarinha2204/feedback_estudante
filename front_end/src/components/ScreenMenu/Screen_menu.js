@@ -1,71 +1,87 @@
 import React, { useState } from "react";
 
-// Importação de recursos
+// ------------------------------------------------
+// COMPONENTE: MENU PRINCIPAL (SCREEN MENU)
+// ------------------------------------------------
+
+// Importação do arquivo de estilos CSS para o layout da página
 import "./Screen_menu.css"; 
-// import logoEscola from '../../assets/logo_jt.png'; // (Seu import original)
 
-// MUDANÇA: Importa o seu componente de Relatório
-// ISSO É O CERTO
+// Importação do componente que renderiza o Relatório (tela de gestão/direção)
 import TelaRelatorio from "../RelatoryScreen/relatory_screen.jsx";
-import { ArrowLeft } from "lucide-react"; // Importa o ícone de voltar
+// Importação de ícone para uso na interface
+import { ArrowLeft } from "lucide-react"; 
 
-// Placeholder do logo (use o seu import original)
-const logoEscola = "https://imgur.com/9FAmRRW.png";
+// URL de placeholder para o logo da escola
+const logoEscola = "https://imgur.com/oGUfXtc.png";
 
 /**
- * Componente ScreenMenu
- * Renderiza a tela principal após o login, exibindo as turmas OU o relatório.
- * @param {object} props
- * @param {function} props.onLogout - Função para DESLOGAR (vem do App.js)
+ * Componente principal do menu após o login.
+ * Controla a navegação entre a lista de turmas e a tela de Relatório.
+ * * @param {object} props - Propriedades do componente.
+ * @param {function} props.onLogout - Função de callback para encerrar a sessão do usuário.
  */
 const ScreenMenu = ({ onLogout }) => {
-  // Estado para controlar a visibilidade do menu dropdown do perfil
+  // 1. ESTADOS
+  
+  // Estado para controlar a visibilidade do menu dropdown (perfil)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // MUDANÇA: Novo estado para controlar a tela
+  // Estado que controla qual tela será exibida: Menu Principal (false) ou Relatório (true)
   const [mostrarRelatorio, setMostrarRelatorio] = useState(false);
 
-  // Alterna a visibilidade do menu dropdown
+  // 2. HANDLERS
+
+  /**
+   * Alterna a visibilidade do menu dropdown do perfil.
+   */
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // --- MUDANÇA: Funções para mostrar/esconder o relatório ---
+  /**
+   * Define o estado para exibir a Tela de Relatório.
+   * @param {Event} e - Evento de clique.
+   */
   const verRelatorio = (e) => {
-    e.preventDefault(); // Impede o link de pular a página
+    e.preventDefault(); // Previne ação padrão de links (navegação)
     setMostrarRelatorio(true);
-    setIsMenuOpen(false); // Fecha o dropdown
+    setIsMenuOpen(false); // Garante que o dropdown seja fechado
   };
+
+  /**
+   * Define o estado para retornar ao Menu Principal (lista de turmas).
+   */
   const voltarParaMenu = () => {
     setMostrarRelatorio(false);
   };
 
-  // --- Renderização ---
-  
-  // Se 'mostrarRelatorio' for true, renderiza SÓ o relatório
-  // O relatório já tem os dados mockados dentro dele, 
-  // então só passamos a função 'aoVoltar'.
+  // 3. RENDERIZAÇÃO CONDICIONAL
+
+  // Se o estado 'mostrarRelatorio' for verdadeiro, renderiza exclusivamente o componente TelaRelatorio
   if (mostrarRelatorio) {
     return (
       <TelaRelatorio
-        // MUDANÇA: Passa a função de VOLTAR
+        // Passa a função para permitir que o usuário volte ao menu principal
         aoVoltar={voltarParaMenu} 
       />
     );
   }
 
-  // Se 'mostrarRelatorio' for false, renderiza o menu normal
+  // 4. RENDERIZAÇÃO DO MENU PRINCIPAL (LISTA DE TURMAS)
   return (
     <div className="menu-wrapper">
-      {/* Cabeçalho da página */}
+      {/* 4.1. CABEÇALHO */}
       <header className="cabecalho-menu">
+        {/* Identidade Visual da Escola */}
         <div className="identidade-escola">
           <img src={logoEscola} alt="Logo da Escola" className="logo-escola" />
           <h1 className="nome-escola">Escola Estadual Padre João Tomes</h1>
         </div>
 
-        {/* Menu de perfil do usuário */}
+        {/* Menu de Perfil e Dropdown */}
         <div className="perfil-menu-container">
+          {/* Avatar/Ícone do Usuário que aciona o dropdown */}
           <div className="perfil-avatar" onClick={toggleMenu}>
              <svg
                xmlns="http://www.w3.org/2000/svg"
@@ -83,28 +99,30 @@ const ScreenMenu = ({ onLogout }) => {
              </svg>
           </div>
 
-          {/* O SEU MENU DROPDOWN */}
+          {/* Dropdown Menu (Visibilidade controlada por isMenuOpen) */}
           {isMenuOpen && (
             <div className="dropdown-menu">
+              {/* Informações do Usuário (Hardcoded para exemplo) */}
               <div className="dropdown-header">
                 <strong>Vinícius Marconsin</strong>
                 <span>3º ano A - 2025</span>
               </div>
               <div className="dropdown-divider"></div>
               
-              {/* Botão para VER o relatório */}
+              {/* Opção para acessar o Relatório (Direção) */}
               <a href="#!" className="dropdown-item" onClick={verRelatorio}>
                 Ver Relatório (Direção)
               </a>
 
+              {/* Opção de Troca de Senha (Funcionalidade Placeholder) */}
               <a href="#!" className="dropdown-item">
                 Trocar senha
               </a>
               
-              {/* O BOTÃO DE SAIR QUE PRECISA FUNCIONAR */}
+              {/* Opção de Sair (Chama a função onLogout passada via props) */}
               <a
                 href="#!"
-                onClick={onLogout} // <--- AQUI A MÁGICA
+                onClick={onLogout} 
                 className="dropdown-item dropdown-item-sair"
               >
                 Sair
@@ -114,8 +132,9 @@ const ScreenMenu = ({ onLogout }) => {
         </div>
       </header>
 
-      {/* Conteúdo principal da página (lista de turmas) */}
+      {/* 4.2. CONTEÚDO PRINCIPAL (LISTA DE TURMAS) */}
       <main className="container py-5">
+        {/* Título e Subtítulo da Área Principal */}
         <div className="text-center mb-5">
           <h1 className="menu-title">Feedback Discente</h1>
           <p className="menu-subtitle">
@@ -123,8 +142,9 @@ const ScreenMenu = ({ onLogout }) => {
           </p>
         </div>
 
-        {/* Grid com os cards das turmas (seu código original) */}
+        {/* Grid de Cards de Turmas */}
         <div className="row justify-content-center g-5">
+           {/* Card 1: 1º Ano A */}
            <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img
@@ -138,6 +158,7 @@ const ScreenMenu = ({ onLogout }) => {
               </div>
             </div>
           </div>
+          {/* Card 2: 2º Ano A */}
            <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img
@@ -151,6 +172,7 @@ const ScreenMenu = ({ onLogout }) => {
               </div>
             </div>
           </div>
+          {/* Card 3: 3º Ano A */}
            <div className="col-lg-4 col-md-6 mb-4">
             <div className="custom-card">
               <img

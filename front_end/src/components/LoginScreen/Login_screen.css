@@ -1,25 +1,31 @@
-/* Importação da fonte Poppins */
+/* ------------------------------------------------ */
+/* CONFIGURAÇÃO INICIAL */
+/* ------------------------------------------------ */
+
+/* Importação da família de fontes principal Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-/* Reset de estilos para consistência entre navegadores */
+/* Reset global de estilos para padronização e evitar inconsistências de navegador */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilo base do corpo da página */
+/* Definições de estilo base e tipografia para o corpo do documento */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #ffffff;
-    /* Adiciona anti-aliasing para fontes ficarem mais suaves */
+    /* Otimiza a renderização de fontes para maior suavidade (anti-aliasing) */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Layout Principal --- */
+/* ------------------------------------------------ */
+/* LAYOUT E ESTRUTURA PRINCIPAL (DESKTOP) */
+/* ------------------------------------------------ */
 
-/* Contêiner principal da tela */
+/* Contêiner flexível que define o layout da tela de login (100% da viewport) */
 .tela-login {
     display: flex;
     min-height: 100vh;
@@ -28,31 +34,28 @@ body {
     position: relative;
 }
 
-/* Seção do formulário (esquerda) */
+/* Seção do formulário de login (painel esquerdo) */
 .secao-formulario {
     width: 50%;
-    /* * * MUDANÇA: 'flex-basis' ajustado para 55% para bater com o 'width' */
     flex-basis: 53%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* * * MUDANÇA: Padding agora usa 'vw' para escalar com a tela */
     padding: 2.5vw;
     position: absolute;
-    z-index: 2;
+    z-index: 2; /* Garante que o formulário fique acima da imagem */
     background-color: transparent;
     min-height: 100vh;
 }
 
-/* Seção da imagem de destaque (direita) */
+/* Seção de destaque visual/imagem (painel direito) */
 .secao-imagem {
     position: absolute;
     top: 0;
     right: 0;
     height: 100vh;
-    z-index: 1;
-    /* Largura mantida como você definiu */
+    z-index: 1; /* Fica abaixo do formulário */
     width: 78%;
     background-color: transparent;
     background-size: cover;
@@ -61,29 +64,29 @@ body {
 }
 
 
-/* --- Cabeçalho --- */
+/* ------------------------------------------------ */
+/* COMPONENTES: CABEÇALHO */
+/* ------------------------------------------------ */
 
 .cabecalho {
     position: absolute;
-    /* * * MUDANÇA: Posição usa 'vh' e 'vw' para escalar */
     top: 2vh;
     left: 2.5vw;
     display: flex;
     align-items: center;
-    /* * * MUDANÇA: Gap usa 'vw' para escalar */
     gap: 0.8vw;
     z-index: 3;
 }
 
+/* Estilo do elemento da logo (tamanho e proporção) */
 .logo-escola {
-    /* * * MUDANÇA: Altura usa 'vh' (altura da tela) */
     height: 6vh;
     width: auto;
     object-fit: contain;
 }
 
+/* Estilo do nome da escola (tamanho adaptativo e gradiente de cor) */
 .nome-escola {
-    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
     font-size: clamp(1rem, 1.1vw, 1.3rem);
     font-weight: 600;
     background: linear-gradient(45deg, #0b74cf, #9090ec);
@@ -92,32 +95,32 @@ body {
     color: transparent;
 }
 
-/* --- Componentes do Formulário --- */
+/* ------------------------------------------------ */
+/* COMPONENTES: FORMULÁRIO */
+/* ------------------------------------------------ */
 
-/* Card principal do formulário */
+/* Estilização do card que envolve o formulário de autenticação */
 .card-formulario {
     width: 100%;
-    /* * * MUDANÇA: max-width trocado de px para rem (melhor para acessibilidade) */
-    max-width: 55rem;
-    /* (Equivalente a 480px, um pouco mais flexível) */
-    /* * * MUDANÇA: margin-top usa 'vh' */
-    margin-top: 5vh;
-    /* * * MUDANÇA: Padding usa 'vw' */
-    padding: 2.5vw;
+    /* Garante que o card não exceda uma largura máxima em telas grandes */
+    max-width: 45rem; 
+    margin-top: 3rem;
+    padding: 2.5rem;
     background-color: #ffffff;
     border-radius: 12px;
+    /* Aplica sombra sutil para profundidade */
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
+/* Título principal do formulário com tamanho adaptativo (clamp) */
 .titulo-principal {
-    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
     font-size: clamp(2.5rem, 3.5vw, 4rem);
     font-weight: 800;
-    /* * * MUDANÇA: margin-bottom usa 'vh' */
-    margin-bottom: 4vh;
+    margin-bottom: 2.5rem;
     text-align: center;
 }
 
+/* Aplica gradiente de cor ao texto do título */
 .titulo-gradiente {
     background: linear-gradient(10deg, #0b74cf, #7678f2);
     -webkit-background-clip: text;
@@ -125,73 +128,74 @@ body {
     color: transparent;
 }
 
+/* Contêiner de cada campo de input */
 .grupo-input {
-    /* * * MUDANÇA: margin-bottom usa 'vh' */
-    margin-bottom: 2vh;
+    margin-bottom: 1.5rem;
 }
 
+/* Rótulo do campo de input */
 .grupo-input label {
     display: block;
-    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
     font-size: clamp(0.85rem, 0.9vw, 1rem);
     font-weight: 500;
     color: #374151;
-    /* * * MUDANÇA: margin-bottom usa 'vh' */
-    margin-bottom: 1vh;
+    margin-bottom: 0.5rem;
 }
 
+/* Estilização dos campos de input de texto */
 .grupo-input input {
     width: 100%;
-    /* * * MUDANÇA: Padding usa 'vh' e 'vw' */
-    padding: 1.8vh 1.2vw;
+    padding: 1rem 1.2rem;
     border: 1px solid #e2e8f0;
     border-radius: 0.5rem;
-    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
     font-size: clamp(0.9rem, 1vw, 1.1rem);
     color: #1a202c;
     transition: all 0.2s ease-in-out;
 }
 
+/* Efeito de foco (focus) para acessibilidade e feedback visual */
 .grupo-input input:focus {
     outline: none;
     border-color: #4299e1;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
 }
 
+/* Botão de ação principal (Acessar) */
 .botao-acessar {
     width: 100%;
-    /* * * MUDANÇA: Padding usa 'vh' e 'vw' */
-    padding: 2vh 1.2vw;
+    padding: 1.1rem 1.2rem;
     border: none;
     border-radius: 0.5rem;
     color: rgb(228, 228, 228);
-    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
     font-size: clamp(1rem, 1.1vw, 1.2rem);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     letter-spacing: 0.5px;
+    /* Gradiente principal do botão */
     background: linear-gradient(90deg, #0d7eb2, #7a8bf7);
 }
 
+/* Efeito de hover no botão para feedback de interação */
 .botao-acessar:hover {
     background: linear-gradient(90deg, #505fa0, #12648d);
     transform: translateY(-2px);
 }
 
+/* Rodapé do card (mensagem de direitos autorais ou informação) */
 .rodape-card {
-    /* * * MUDANÇA: margin-top usa 'vh' */
-    margin-top: 2vh;
+    margin-top: 1.5rem;
     text-align: center;
-    /* * * MUDANÇA: Fonte usa clamp(min, preferencial, max) */
     font-size: clamp(0.8rem, 0.85vw, 0.9rem);
     color: #718096;
     line-height: 1.5;
 }
 
-/* --- Elementos Decorativos e Animações --- */
+/* ------------------------------------------------ */
+/* ELEMENTOS DECORATIVOS E ANIMAÇÕES */
+/* ------------------------------------------------ */
 
-/* * * MUDANÇA: Removido 'width: 100px;' que estava em conflito com 'vw' */
+/* Elementos decorativos posicionados de forma fixa na tela (estrelas maiores) */
 .estrela-flutuante,
 .estrela-flutuante2,
 .estrela-flutuante3,
@@ -206,7 +210,7 @@ body {
     animation: brilhar 4s infinite ease-in-out;
 }
 
-/* Posições específicas dos elementos (AGORA COM VW/VH) */
+/* Posicionamento específico para cada elemento decorativo */
 .estrela-flutuante {
     top: 25.9vh;
     right: 13.5vw;
@@ -225,8 +229,6 @@ body {
     width: 6.5vw;
 }
 
-
-/* ALTERAR IMAGEM */
 .estrela-flutuante4 {
     top: 10vh;
     right: 18.7vw;
@@ -257,7 +259,7 @@ body {
     width: 4.6vw;
 }
 
-/* === ESTRELAS 9 E 10 COM NOVA ANIMAÇÃO === */
+/* Estrelas menores com animação de piscar */
 .estrela-flutuante9 {
     position: fixed;
     z-index: 10;
@@ -302,7 +304,6 @@ body {
     position: fixed;
     z-index: 10;
     height: auto;
-    /* * * MUDANÇA: Corrigido typo 'button:' para 'bottom:' */
     bottom: 61vh;
     right: 3.3vw;
     width: 2.5vw;
@@ -359,8 +360,8 @@ body {
     animation: piscar 6s infinite ease-in-out 3.7s;
 }
 
+/* Keyframes para animação de 'brilho' com rotação sutil */
 @keyframes brilhar {
-
     0%,
     100% {
         transform: scale(1) rotate(0deg);
@@ -373,9 +374,8 @@ body {
     }
 }
 
-/* === NOVA ANIMAÇÃO PISCAR === */
+/* Keyframes para animação de 'piscar' */
 @keyframes piscar {
-
     0%,
     100% {
         transform: scale(0.9);
@@ -388,31 +388,29 @@ body {
     }
 }
 
-/* --- Design Responsivo --- */
+/* ------------------------------------------------ */
+/* RESPONSIVIDADE (MEDIA QUERIES) */
+/* ------------------------------------------------ */
 
-/* As media queries estão corretas. Elas definem os *pontos de quebra* * onde o layout muda drasticamente (ex: de 2 colunas para 1).
- * As mudanças que fiz *dentro* das classes (com 'vw', 'vh', 'clamp')
- * cuidam da fluidez *entre* esses pontos de quebra.
- */
+/* Transição de desktop (layout dividido) para mobile (layout empilhado) */
 @media (max-width: 1175px) {
+    /* Altera o layout principal de flexível (lado a lado) para bloco (empilhado) */
     .tela-login {
         display: block;
     }
 
-    /* Aqui a .secao-formulario volta a ter 100% de largura,
-     * o que sobrescreve o 'width: 55%' e 'flex-basis: 55%' (correto). */
+    /* Ocupa a largura total da tela e se posiciona de forma relativa */
     .secao-formulario {
         position: relative;
         width: 100%;
         flex-basis: auto;
-        /* Garante a quebra do flex */
         min-height: 100vh;
         Z-index: 2;
         background: transparent;
         padding: 2.5rem;
-        /* Volta para 'rem' no mobile, o que é bom */
     }
 
+    /* A seção de imagem se torna um background de baixa opacidade para telas menores */
     .secao-imagem {
         position: absolute;
         top: 0;
@@ -425,35 +423,33 @@ body {
         background-attachment: scroll;
     }
 
+    /* Reajusta o posicionamento do cabeçalho de absoluto para estático */
     .cabecalho {
         position: static;
         justify-content: center;
         margin-bottom: 2rem;
-        /* Volta para 'rem'/'px' no mobile, o que é mais previsível */
         gap: 0.8rem;
     }
 
+    /* Redefine o tamanho da logo e do nome da escola */
     .logo-escola {
         height: 3.5rem;
     }
 
     .nome-escola {
         font-size: 1.1rem;
-        /* Volta pra 'rem' */
     }
 
+    /* Ajusta o card do formulário para o novo layout de tela */
     .card-formulario {
         width: 90%;
         max-width: 460px;
-        /* max-width em px é bom aqui */
         margin-top: 2rem;
-        /* Volta pra 'rem' */
         padding: 2.5rem;
     }
 
     .titulo-principal {
         font-size: 3rem;
-        /* Fontes voltam para 'rem' */
         margin-bottom: 2.5rem;
     }
 
@@ -482,7 +478,7 @@ body {
     }
 
 
-    /* Esconde as estrelas (agora 'fixed') em telas menores */
+    /* Esconde os elementos decorativos para otimizar a visualização em dispositivos móveis */
     .estrela-flutuante,
     .estrela-flutuante2,
     .estrela-flutuante3,
@@ -504,8 +500,9 @@ body {
     }
 }
 
-/* Estilos para celulares (até 576px) */
+/* Ajustes de estilo para dispositivos móveis (largura máxima de 576px) */
 @media (max-width: 576px) {
+    /* Remove a sombra do card em telas muito pequenas para maior leveza */
     .card-formulario {
         padding: 1.5rem;
         box-shadow: none;
@@ -516,6 +513,7 @@ body {
         margin-bottom: 2rem;
     }
 
+    /* Ajustes finais no cabeçalho */
     .logo-escola {
         height: 2.8rem;
     }
